@@ -80,9 +80,19 @@ Download link:** [**https://www.elastic.co/downloads/past-releases/elasticsearch
 
 ### **Scala 2.12.x** 
 
+#### **Document**
+
+**Official doc:**
+
+{% embed url="https://docs.scala-lang.org/getting-started/index.html" %}
+
+\*\*\*\*
+
 **Homebrew install** 
 
 {% embed url="https://formulae.brew.sh/formula/scala" %}
+
+\*\*\*\*
 
 \*\*\*\*
 
