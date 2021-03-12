@@ -1,4 +1,4 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [OpenTargets & Bento Learning Material](README.md)
 
