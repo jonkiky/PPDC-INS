@@ -106,7 +106,24 @@ install sbt by using SDKMAN
 
 \*\*\*\*
 
-\*\*\*\*
+**Run Front-end** 
+
+1. **Clone code from** [**https://github.com/opentargets/platform-app**](https://github.com/opentargets/platform-app)\*\*\*\*
+2.  **It is a react application, so run yarn install or yarn**
+3. yarn start 
+4. check localhost:3000 to test app is up or not. 
+
+**Run API portal**
+
+1. **Clone  Code from openTargets** [**https://github.com/opentargets/platform-api-beta**](https://github.com/opentargets/platform-api-beta)\*\*\*\*
+2. **cd openTargets**
+3. **Run sbt**
+4. **in the console, run ~run.** 
+5. check localhost:9000 to test app is up or not. 
+
+
+
+
 
 \*\*\*\*
 
