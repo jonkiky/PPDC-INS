@@ -1,27 +1,17 @@
----
-description: >-
-  for project index of NCI-funded Studies)    PPDC(Pediatric Preclinical Data
-  Commons)
----
+# OpenTargets Installation
 
-# Introduction
+## **Database** 
 
-##   ****
-
-## **OpenTarget Installation**
-
-### **Database** 
-
-#### **Clickhouse** 
+### **Clickhouse** 
 
 [**https://clickhouse.tech/docs/en/getting-started/install/**](https://clickhouse.tech/docs/en/getting-started/install/)   
 ****
 
-**System Requirements** 
+#### **System Requirements** 
 
 **ClickHouse can run on any Linux, FreeBSD, or Mac OS X with x86\_64, AArch64, or PowerPC64LE CPU architecture.**
 
-**Document:**
+#### **Document**
 
 **Install from source can be found here \(for Mac user\) :** 
 
@@ -30,24 +20,24 @@ description: >-
 [**https://clickhouse.tech/docs/en/development/build-osx/**](https://clickhouse.tech/docs/en/development/build-osx/)  
 ****
 
-**Support:**  
+#### **Support**
 
 **Telegram  https://telegram.me/clickhouse\_en**  
 
 
-**Command line** 
+#### **Command-line** 
 
 **./clickhouse-server --config-file=/Users/jonkiky/Documents/work/openTarget/ClickHouse/programs/server/config.xml**  
 
 
-**Possible Issues :**
+#### **Possible Issues** 
 
 ![](https://lh5.googleusercontent.com/2IpyormoZPisU-Z_eSWHZQ_Cuin8xkT8z430BKkY_lrblRQAiXZ2o-oVUoVb9UYxOt4SfodYvZ6rNXo_GbKzxmolxjnXjadtA2MW7R6v---6Zp_mhd1H43ixqimCbft17K4M6Ov7)
 
 **Fails at  DB::Exception: ClickHouse server built without NuRaft library.**  
 
 
-**Solution:**
+#### **Solution**
 
 **Remove zookeeper settings and test zookeeper settings.**  
 
@@ -59,20 +49,16 @@ description: >-
 
 **Refers :** [**https://github.com/ClickHouse/ClickHouse/issues/4105**](https://github.com/ClickHouse/ClickHouse/issues/4105)
 
-#### **Elasticsearch**
+### **Elasticsearch**
 
 **According to repo platform-api-beta\(** [**https://github.com/opentargets/platform-api-beta**](https://github.com/opentargets/platform-api-beta)**\), open target will use ES server 7.2, Port: 9200.** 
 
-**CH uses Port 9000.**   
-
-
-**Download link:** [**https://www.elastic.co/downloads/past-releases/elasticsearch-7-2-0**](https://www.elastic.co/downloads/past-releases/elasticsearch-7-2-0)  
-****
-
+**CH uses Port 9000.   
+Download link:** [**https://www.elastic.co/downloads/past-releases/elasticsearch-7-2-0**](https://www.elastic.co/downloads/past-releases/elasticsearch-7-2-0)  
 **Github:** [**https://github.com/elastic/elasticsearch/tree/7.2**](https://github.com/elastic/elasticsearch/tree/7.2)   
 ****
 
-**System Requirements** 
+#### **System Requirements** 
 
  **Java 11** 
 
@@ -87,13 +73,28 @@ description: >-
 
 [**https://mkyong.com/java/how-to-set-java\_home-environment-variable-on-mac-os-x/**](https://mkyong.com/java/how-to-set-java_home-environment-variable-on-mac-os-x/)
 
-**Document** 
+#### **Document** 
 
-[**https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html**](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html)  
-  
+\*\*\*\*[**https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html**](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html)  
 ****
 
-#### **Scala 2.12.x** 
+### **Scala 2.12.x** 
 
+#### **Document**
 
+**Official doc:**
+
+{% embed url="https://docs.scala-lang.org/getting-started/index.html" %}
+
+\*\*\*\*
+
+**Homebrew install** 
+
+{% embed url="https://formulae.brew.sh/formula/scala" %}
+
+\*\*\*\*
+
+\*\*\*\*
+
+\*\*\*\*
 
