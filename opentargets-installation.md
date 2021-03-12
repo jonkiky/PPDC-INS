@@ -98,7 +98,7 @@ Install SDKMAN
 
 
 
-**install sbt by using SDKMAN**
+install sbt by using SDKMAN
 
 {% embed url="https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html" %}
 
