@@ -6,8 +6,6 @@ description: >-
 
 # Introduction
 
-##   ****
-
 ## **OpenTarget Installation**
 
 ### **Database** 

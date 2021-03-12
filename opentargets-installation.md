@@ -92,6 +92,20 @@ Download link:** [**https://www.elastic.co/downloads/past-releases/elasticsearch
 
 {% embed url="https://formulae.brew.sh/formula/scala" %}
 
+Install SDKMAN
+
+{% embed url="https://sdkman.io/install" %}
+
+
+
+**install sbt by using SDKMAN**
+
+{% embed url="https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html" %}
+
+\*\*\*\*
+
+\*\*\*\*
+
 \*\*\*\*
 
 \*\*\*\*
