@@ -153,8 +153,69 @@ create table if not exists ot.associations_otf_log(\
 Import data:
 
 ```text
--- cat part-00* | ./clickhouse-client -h localhost --query="insert into ot.associations_otf_log format JSONEachRow "
+cat part-00* | ./clickhouse-client -h localhost --query="insert into ot.associations_otf_log format JSONEachRow "
 ```
 
-\*\*\*\*
+Check database:
+
+```text
+9684736 rows in set. Elapsed: 3.671 sec. Processed 9.68 million rows, 2.51 GB (2.64 million rows/s., 684.65 MB/s.) 
+
+Yizhens-MacBook-Pro.local :) select * from ot.associations_otf_log
+```
+
+Create table:
+
+```text
+create table if not exists ot.associations_otf_disease \
+engine = MergeTree() \
+order by (A, B, datasource_id) \
+primary key (A) \
+as select \
+    row_id, \
+    A, \
+    B, \
+    datatype_id, \
+    datasource_id, \
+    row_score, \
+    A_search, \
+    B_search  \
+from (select  \
+        row_id, \
+        disease_id as A, \
+        target_id as B, \
+        datatype_id, \
+        datasource_id, \
+        row_score, \
+        lower(disease_data) as A_search, \
+        lower(target_data) as B_search \
+    from ot.associations_otf_log); \
+
+create table if not exists ot.associations_otf_target \
+engine = MergeTree() \
+order by (A, B, datasource_id) \
+primary key (A) \
+as select \
+    row_id, \
+    A, \
+    B, \
+    datatype_id, \
+    datasource_id, \
+    row_score, \
+    A_search, \
+    B_search \
+from (select  \
+        row_id, \
+        disease_id as B, \
+        target_id as A, \
+        datatype_id, \
+        datasource_id, \
+        row_score, \
+        lower(disease_data) as B_search, \
+        lower(target_data) as A_search \
+    from ot.associations_otf_log); \
+
+```
+
+
 
