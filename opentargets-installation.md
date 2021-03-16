@@ -15,7 +15,9 @@
 
 **Install from source can be found here \(for Mac user\) :** 
 
-**Windows users have to install the linux system in VB, in order to use the CH. will find it out later.  For Mac and linux users, the steps to install the CH are largely the same.** 
+**Windows users have to install the linux system in VB.**
+
+**For Mac and linux users, the steps to install the CH are largely the same.** 
 
 [**https://clickhouse.tech/docs/en/development/build-osx/**](https://clickhouse.tech/docs/en/development/build-osx/)  
 ****
