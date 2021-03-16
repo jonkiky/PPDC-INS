@@ -217,5 +217,13 @@ from (select  \
 
 ```
 
+Done !
+
+For aotf data,  clickhouse needs 7.2 GB disk space. 
+
+
+
+
+
 
 
