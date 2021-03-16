@@ -29,8 +29,12 @@
 
 #### **Command-line** 
 
-**./clickhouse-server --config-file=/Users/jonkiky/Documents/work/openTarget/ClickHouse/programs/server/config.xml**  
+**./clickhouse-server --config-file=/Users/jonkiky/Documents/work/openTarget/ClickHouse/programs/server/config.xml**
 
+\*\*\*\*
+
+  
+****
 
 #### **Possible Issues** 
 
