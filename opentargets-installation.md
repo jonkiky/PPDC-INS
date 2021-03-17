@@ -223,6 +223,14 @@ For aotf data,  clickhouse needs 7.2 GB disk space.
 
 
 
+ElasticSearch import data
+
+Install elasticsearch-loader
+
+```text
+pip install elasticsearch-loader
+```
+
 
 
 
