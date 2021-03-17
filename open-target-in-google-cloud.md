@@ -1,18 +1,35 @@
 # Open target in Google Cloud
 
+**Install NVM** 
 
+{% embed url="https://cloud.google.com/nodejs/docs/setup" %}
 
-wget [https://nodejs.org/dist/latest-v15.x/node-v15.11.0-linux-x64.tar.gz](https://nodejs.org/dist/latest-v15.x/node-v15.11.0-linux-x64.tar.gz)
+*  use node version 12~14, the latest has some issue with platform-app
 
-tar xzvf node-v _&& cd node-v_
+**Install Yarn**
 
-sudo yum install gcc gcc-c++
+```text
+sudo yum install -y make gcc*
 
-[https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-a-centos-7-server](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-a-centos-7-server)
-
-sudo yum install -y make gcc\*
-
-curl --silent --location [https://dl.yarnpkg.com/rpm/yarn.repo](https://dl.yarnpkg.com/rpm/yarn.repo) \| sudo tee /etc/yum.repos.d/yarn.repo sudo rpm --import [https://dl.yarnpkg.com/rpm/pubkey.gpg](https://dl.yarnpkg.com/rpm/pubkey.gpg)
+curl --silent --location 
+https://dl.yarnpkg.com/rpm/yarn.repo
+ | sudo tee /etc/yum.repos.d/yarn.repo sudo rpm --import 
+https://dl.yarnpkg.com/rpm/pubkey.gpg
 
 sudo yum install yarn
+```
+
+
+
+Install git
+
+```text
+sudo yum install git
+```
+
+
+
+
+
+
 
