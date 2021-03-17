@@ -62,7 +62,11 @@
 **CH uses Port 9000.   
 Download link:** [**https://www.elastic.co/downloads/past-releases/elasticsearch-7-2-0**](https://www.elastic.co/downloads/past-releases/elasticsearch-7-2-0)  
 **Github:** [**https://github.com/elastic/elasticsearch/tree/7.2**](https://github.com/elastic/elasticsearch/tree/7.2)   
-****
+**Kibana**
+
+{% embed url="https://www.elastic.co/downloads/past-releases/kibana-7-2-0" %}
+
+\*\*\*\*
 
 #### **System Requirements** 
 
