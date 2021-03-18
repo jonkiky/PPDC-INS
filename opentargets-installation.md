@@ -1,4 +1,4 @@
-# OpenTargets In MacOS
+# OpenTargets On MacOS
 
 ## **Database** 
 
