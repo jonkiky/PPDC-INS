@@ -68,3 +68,15 @@ Import data to clickhouse and ES
 
 Run ES 
 
+
+
+
+
+How to delete all data in ES. 
+
+
+
+```text
+curl -XDELETE localhost:9200/all
+```
+
