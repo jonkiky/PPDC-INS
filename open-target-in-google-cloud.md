@@ -19,8 +19,6 @@ https://dl.yarnpkg.com/rpm/pubkey.gpg
 sudo yum install yarn
 ```
 
-
-
 **Install git**
 
 ```text
@@ -62,8 +60,6 @@ Refer: [https://www.vultr.com/docs/how-to-install-scala-on-centos-7](https://www
 sudo yum install java-1.8.0-openjdk
 ```
 
-
-
 **Import data to clickhouse and ES**
 
 **install pip** 
@@ -76,15 +72,11 @@ sudo yum install java-1.8.0-openjdk
 pip install elasticsearch-loader
 ```
 
-
-
 **Run ES as de**
 
 ```text
 nohup ./bin/elasticsearch & 
 ```
-
-
 
 **How to delete all data in ES.** 
 
@@ -116,16 +108,12 @@ sudo vim /etc/clickhouse-server/config.xml
 
 **install SBT**
 
-
-
 ```text
 curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
 sudo yum install sbt
 ```
 
-{% embed url="https://linuxize.com/post/how-to-install-pip-on-centos-7/" %}
-
-run sbt as deamon
+**run sbt as deamon**
 
 ```text
  setsid nohup sbt run &
