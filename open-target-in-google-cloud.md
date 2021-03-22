@@ -109,3 +109,15 @@ sudo yum install sbt
   sudo vim /etc/clickhouse-server/config.xml
 ```
 
+
+
+```text
+pip install elasticsearch-loader
+```
+
+install pip 
+
+{% embed url="https://linuxize.com/post/how-to-install-pip-on-centos-7/" %}
+
+
+
