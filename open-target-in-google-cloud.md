@@ -80,3 +80,26 @@ How to delete all data in ES.
 curl -XDELETE localhost:9200/all
 ```
 
+Install 
+
+{% embed url="https://clickhouse.tech/docs/en/getting-started/install/" %}
+
+install SBT
+
+
+
+```text
+curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
+sudo yum install sbt
+```
+
+
+
+```text
+  sudo systemctl start clickhouse-server
+  250  sudo systemctl start clickhouse-server
+  251  sudo systemctl stop clickhouse-server
+  
+  sudo vim /etc/clickhouse-server/config.xml
+```
+
