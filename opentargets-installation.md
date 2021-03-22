@@ -31,7 +31,10 @@
 
 **./clickhouse-server --config-file=/Users/jonkiky/Documents/work/openTarget/ClickHouse/programs/server/config.xml**
 
-\*\*\*\*
+```text
+./clickhouse-server --config-file=/Users/jonkiky/Documents/work/openTarget/ClickHouse/programs/server/config.xml
+
+```
 
   
 ****
