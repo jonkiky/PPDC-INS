@@ -119,5 +119,9 @@ install pip
 
 {% embed url="https://linuxize.com/post/how-to-install-pip-on-centos-7/" %}
 
+run sbt as deamon
 
+```text
+ setsid nohup sbt run &
+```
 
