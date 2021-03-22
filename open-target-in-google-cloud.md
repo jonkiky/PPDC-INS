@@ -19,22 +19,20 @@ https://dl.yarnpkg.com/rpm/pubkey.gpg
 sudo yum install yarn
 ```
 
-
-
-Install git
+**Install git**
 
 ```text
 sudo yum install git
 ```
 
-Upload files to Google VM
+**Upload data files to Google VM**
 
 ```text
 scp -r -i ~/.ssh/google_compute_engine /Users/jonkiky/Documents/work/openTarget/database/ ds5362165@34.86.72.36:/home/ds5362165/db
 gcloud compute ssh ds5362165@open-target-backendgcloud
 ```
 
-Install ElasticSearch
+**Install ElasticSearch**
 
 ```text
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.0-linux-x86_64.tar.gz
@@ -44,7 +42,7 @@ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.0-li
 tar -xf elasticsearch-7.2.0-linux-x86_64.tar.gz
 ```
 
-git clone repos
+**git clone repos**
 
 ```text
 git clone https://github.com/opentargets/platform-etl-backend.git
@@ -54,7 +52,7 @@ git clone https://github.com/opentargets/platform-etl-backend.git
 git clone https://github.com/opentargets/platform-api-beta.git
 ```
 
-Install Java and Scala 
+**Install Java and Scala** 
 
 Refer: [https://www.vultr.com/docs/how-to-install-scala-on-centos-7](https://www.vultr.com/docs/how-to-install-scala-on-centos-7) 
 
@@ -62,62 +60,71 @@ Refer: [https://www.vultr.com/docs/how-to-install-scala-on-centos-7](https://www
 sudo yum install java-1.8.0-openjdk
 ```
 
+**Import data to clickhouse and ES**
 
+**install pip** 
 
-Import data to clickhouse and ES
+{% embed url="https://linuxize.com/post/how-to-install-pip-on-centos-7/" %}
 
-
-
-
-
-Run ES 
+**Install elasticsearch-loader**
 
 ```text
-
+pip install elasticsearch-loader
 ```
 
+**Run ES as de**
 
+```text
+nohup ./bin/elasticsearch & 
+```
 
-How to delete all data in ES. 
-
-
+**How to delete all data in ES.** 
 
 ```text
 curl -XDELETE localhost:9200/all
 ```
 
-Install 
+**Install  Clickhouse**
 
 {% embed url="https://clickhouse.tech/docs/en/getting-started/install/" %}
 
-install SBT
+**run Clickhouse**
 
-
-
-```text
-curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
-sudo yum install sbt
-```
-
-
+\*\*\*\*
 
 ```text
   sudo systemctl start clickhouse-server
   250  sudo systemctl start clickhouse-server
   251  sudo systemctl stop clickhouse-server
   
-  sudo vim /etc/clickhouse-server/config.xml
+  
 ```
 
-
+**Change Clickhouse default port**
 
 ```text
-pip install elasticsearch-loader
+sudo vim /etc/clickhouse-server/config.xml
 ```
 
-install pip 
+**install SBT**
 
-{% embed url="https://linuxize.com/post/how-to-install-pip-on-centos-7/" %}
+```text
+curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
+sudo yum install sbt
+```
+
+**run sbt as deamon**
+
+```text
+ setsid nohup sbt run &
+```
+
+**Check db in ES**
+
+```text
+curl -X GET "localhost:9200/_cat/indices/"
+
+```
 
 
 

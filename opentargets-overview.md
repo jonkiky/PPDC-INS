@@ -87,3 +87,5 @@ ClickHouse: [https://github.com/opentargets/platform-etl-backend/tree/21.02/clic
 
 ###   ****
 
+![](.gitbook/assets/screen-shot-2021-03-22-at-2.43.37-pm.png)
+
