@@ -40,6 +40,10 @@ Install ElasticSearch
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.0-linux-x86_64.tar.gz
 ```
 
+```text
+tar -xf elasticsearch-7.2.0-linux-x86_64.tar.gz
+```
+
 git clone repos
 
 ```text
@@ -68,7 +72,9 @@ Import data to clickhouse and ES
 
 Run ES 
 
+```text
 
+```
 
 
 
