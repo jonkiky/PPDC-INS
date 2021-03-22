@@ -1,4 +1,4 @@
-# OpenTargets In MacOS
+# OpenTargets On MacOS
 
 ## **Database** 
 
@@ -224,18 +224,6 @@ from (select  \
 Done !
 
 For aotf data,  clickhouse needs 7.2 GB disk space. 
-
-
-
-ElasticSearch import data
-
-Install elasticsearch-loader
-
-```text
-pip install elasticsearch-loader
-```
-
-
 
 
 
