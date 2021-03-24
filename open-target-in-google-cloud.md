@@ -1,4 +1,4 @@
-# Install Open Targets  to GCP
+# Open target in Google Cloud
 
 **Install NVM** 
 

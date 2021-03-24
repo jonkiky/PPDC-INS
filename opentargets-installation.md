@@ -1,4 +1,4 @@
-# Install OpenTargets to MacOS
+# OpenTargets On MacOS
 
 ## **Database** 
 
