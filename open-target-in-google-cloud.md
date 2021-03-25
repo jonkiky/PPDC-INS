@@ -1,4 +1,4 @@
-# Open target in Google Cloud
+# Install Open Targets  to GCP
 
 **Install NVM** 
 
@@ -127,4 +127,12 @@ curl -X GET "localhost:9200/_cat/indices/"
 ```
 
 
+
+
+
+visit :
+
+OTG:  http://34.121.72.138:3000 
+
+OTP: 
 
