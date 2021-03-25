@@ -654,7 +654,290 @@ load\_cancerbiomarker.sh
 }
 ```
 
-###  sourceId=expression\_atlas/ sourceId=gene2phenotype/ sourceId=genomics\_england/ sourceId=intogen/ sourceId=ot\_genetics\_portal/ sourceId=phenodigm/ sourceId=phewas\_catalog/ sourceId=progeny/ sourceId=reactome/ sourceId=slapenrich/ sourceId=sysbio/ sourceId=uniprot\_literature/
+###  sourceId=expression\_atlas/
+
+```text
+{
+   "datasourceId":"expression_atlas",
+   "targetId":"ENSG00000167900",
+   "diseaseFromSourceId":"EFO_0000676",
+   "resourceScore":0.00457,
+   "log2FoldChangeValue":1.2,
+   "log2FoldChangePercentileRank":95,
+   "targetFromSourceId":"ENSG00000167900",
+   "datatypeId":"rna_expression",
+   "diseaseFromSource":"lesional",
+   "contrast":"'psoriasis lesional skin' vs 'psoriasis non-lesional skin'",
+   "studyOverview":"Gene expression in psoriasis lesions and uninvolved skin",
+   "diseaseId":"EFO_0000676",
+   "studyId":"E-GEOD-50790",
+   "targetSymbol":"TK1",
+   "targetName":"thymidine kinase 1",
+   "diseaseLabel":"psoriasis",
+   "id":"003fa408f0139acbe3ba752aeb04fdf9954902a7",
+   "score":0.026676955319203704
+}
+```
+
+###  sourceId=gene2phenotype/
+
+```text
+{
+   "datasourceId":"gene2phenotype",
+   "targetId":"ENSG00000101115",
+   "diseaseFromSourceId":"Orphanet_93293",
+   "confidence":"confirmed",
+   "targetFromSourceId":"ENSG00000101115",
+   "datatypeId":"genetic_literature",
+   "diseaseFromSource":"DUANE-RADIAL RAY SYNDROME",
+   "allelicRequirements":[
+      "monoallelic"
+   ],
+   "diseaseId":"Orphanet_93293",
+   "studyId":"DD",
+   "targetSymbol":"SALL4",
+   "targetName":"spalt like transcription factor 4",
+   "diseaseLabel":"Okihiro syndrome",
+   "id":"0937c5305c24c6fc25bfdff158bd2138c091824a",
+   "score":1.0
+}
+```
+
+###  sourceId=genomics\_england/
+
+```text
+{
+   "datasourceId":"genomics_england",
+   "targetId":"ENSG00000159921",
+   "diseaseFromSourceId":"Orphanet_602",
+   "cohortPhenotypes":[
+      "Sialuria, 269921",
+      "Nonaka myopathy, 605820"
+   ],
+   "literature":[
+      "30847515"
+   ],
+   "confidence":"green",
+   "targetFromSourceId":"ENSG00000159921",
+   "datatypeId":"genetic_literature",
+   "diseaseFromSource":"Nonaka myopathy",
+   "allelicRequirements":[
+      "BOTH monoallelic and biallelic, autosomal or pseudoautosomal"
+   ],
+   "studyOverview":"Severe Paediatric Disorders",
+   "diseaseId":"Orphanet_602",
+   "studyId":"921",
+   "targetSymbol":"GNE",
+   "targetName":"glucosamine (UDP-N-acetyl)-2-epimerase/N-acetylmannosamine kinase",
+   "diseaseLabel":"Distal myopathy, Nonaka type",
+   "id":"0166fb703e0625a1d7cf6d29bdd6a36785622573",
+   "score":1.0
+}
+```
+
+###  sourceId=intogen/
+
+```text
+{
+   "datasourceId":"intogen",
+   "targetId":"ENSG00000081237",
+   "diseaseFromSourceId":"MONDO_0001879",
+   "mutatedSamples":[
+      {
+         "numberMutatedSamples":2,
+         "numberSamplesTested":17
+      }
+   ],
+   "resourceScore":7.587043749655777E-4,
+   "cohortShortName":"ANUS_CANCER_HARTWIG",
+   "cohortId":"HARTWIG_ANUS",
+   "targetFromSourceId":"ENSG00000081237",
+   "significantDriverMethods":[
+      "combination"
+   ],
+   "datatypeId":"somatic_mutation",
+   "diseaseFromSource":"Anus cancer ",
+   "cohortDescription":"Anus cancer data from Hartwig Medical Foundation",
+   "diseaseId":"MONDO_0001879",
+   "studyId":"search?gene=PTPRC&cohort=HARTWIG_ANUS",
+   "targetSymbol":"PTPRC",
+   "targetName":"protein tyrosine phosphatase receptor type C",
+   "diseaseLabel":"anus cancer",
+   "id":"0a4406a3d9ebe32e0b6746a2ef0f2468e3d9abfc",
+   "score":0.4266606176357214
+}
+```
+
+###  sourceId=ot\_genetics\_portal/
+
+```text
+{
+   "datasourceId":"ot_genetics_portal",
+   "targetId":"ENSG00000170035",
+   "variantId":"2_181121038_A_T",
+   "diseaseFromSourceId":"EFO_0004587",
+   "variantFunctionalConsequenceId":"SO_0001628",
+   "publicationYear":2018,
+   "resourceScore":0.7239869236946106,
+   "literature":[
+      "29403010"
+   ],
+   "publicationFirstAuthor":"Kanai M",
+   "pValueExponent":-8,
+   "pValueMantissa":3,
+   "targetFromSourceId":"ENSG00000170035",
+   "datatypeId":"genetic_association",
+   "diseaseFromSource":"Lymphocyte counts",
+   "variantRsId":"rs13011751",
+   "diseaseId":"EFO_0004587",
+   "studyId":"GCST005997",
+   "studySampleSize":62076,
+   "targetSymbol":"UBE2E3",
+   "targetName":"ubiquitin conjugating enzyme E2 E3",
+   "diseaseLabel":"lymphocyte count",
+   "id":"0003e80ee060765321d7a9742f4a42b15df152b5",
+   "score":0.7239869236946106
+}
+```
+
+###  sourceId=phenodigm/
+
+```text
+{
+   "datasourceId":"phenodigm",
+   "targetId":"ENSG00000049130",
+   "biologicalModelAllelicComposition":"Kitl<Sl-31R>/Kitl<+>",
+   "diseaseFromSourceId":"OMIM:612527",
+   "diseaseModelAssociatedModelPhenotypes":[
+      {
+         "id":"MP:0002811",
+         "label":"macrocytic anemia"
+      },
+      {
+         "id":"MP:0002590",
+         "label":"increased mean corpuscular volume"
+      },
+      {
+         "id":"MP:0005561",
+         "label":"increased mean corpuscular hemoglobin"
+      },
+      {
+         "id":"MP:0002939",
+         "label":"head spot"
+      },
+      {
+         "id":"MP:0008237",
+         "label":"abnormal ventral coat pigmentation"
+      }
+   ],
+   "resourceScore":0.9115000000000001,
+   "diseaseModelAssociatedHumanPhenotypes":[
+      {
+         "id":"HP:0012133",
+         "label":"Erythroid hypoplasia"
+      },
+      {
+         "id":"HP:0001972",
+         "label":"Macrocytic anemia"
+      },
+      {
+         "id":"HP:0001896",
+         "label":"Reticulocytopenia"
+      }
+   ],
+   "targetFromSourceId":"ENSG00000049130",
+   "datatypeId":"animal_model",
+   "biologicalModelGeneticBackground":"C3H-Kitl<Sl-31R>",
+   "diseaseFromSource":"Diamond-Blackfan Anemia 4",
+   "targetInModel":"ENSMUSG00000019966",
+   "diseaseId":"Orphanet_124",
+   "targetSymbol":"KITLG",
+   "targetName":"KIT ligand",
+   "diseaseLabel":"Blackfan-Diamond anemia",
+   "id":"00098065d7c6ecf5748ff329042c01a00e7766c3",
+   "score":0.9115000000000001
+}
+```
+
+###  sourceId=phewas\_catalog/
+
+```text
+{
+   "datasourceId":"phewas_catalog",
+   "targetId":"ENSG00000154654",
+   "variantId":"21_21537795_C_T",
+   "diseaseFromSourceId":"EFO_0003777",
+   "variantFunctionalConsequenceId":"SO_0001627",
+   "resourceScore":0.03319,
+   "oddsRatio":0.9197,
+   "targetFromSourceId":"ENSG00000154654",
+   "datatypeId":"genetic_association",
+   "diseaseFromSource":"Ill-defined descriptions and complications of heart disease [429]",
+   "variantRsId":"rs2826891",
+   "studyCases":1847,
+   "diseaseId":"EFO_0003777",
+   "targetSymbol":"NCAM2",
+   "targetName":"neural cell adhesion molecule 2",
+   "diseaseLabel":"heart disease",
+   "id":"003c37a79181247ada87f3d2e5d0e4c74181b7cb",
+   "score":0.010010065944358213
+}
+```
+
+###  sourceId=progeny/
+
+```text
+{
+   "datasourceId":"progeny",
+   "targetId":"ENSG00000121858",
+   "diseaseFromSourceId":"EFO_0000503",
+   "resourceScore":0.760546748134336,
+   "pathwayId":"R-HSA-123456",
+   "targetFromSourceId":"ENSG00000121858",
+   "datatypeId":"affected_pathway",
+   "diseaseFromSource":"stomach adenocarcinoma",
+   "pathwayName":"XXX Pathway desc to be updated",
+   "diseaseId":"EFO_0000503",
+   "targetSymbol":"TNFSF10",
+   "targetName":"TNF superfamily member 10",
+   "diseaseLabel":"gastric adenocarcinoma",
+   "id":"bc39786e91915e0ac934e8c80e0cd7877c723803",
+   "score":0.5
+}
+```
+
+###  sourceId=reactome/
+
+```text
+{
+   "datasourceId":"reactome",
+   "targetId":"ENSG00000146648",
+   "diseaseFromSourceId":"EFO_0000311",
+   "variantAminoacidDescriptions":[
+      
+   ],
+   "targetModulation":"up_or_down",
+   "pathwayId":"R-HSA-5638303",
+   "literature":[
+      "15269313",
+      "15837620",
+      "16314626"
+   ],
+   "targetFromSourceId":"P00533",
+   "reactionId":"R-HSA-1248677",
+   "datatypeId":"affected_pathway",
+   "diseaseFromSource":"cancer",
+   "pathwayName":"Inhibition of Signaling by Overexpressed EGFR",
+   "diseaseId":"EFO_0000311",
+   "targetSymbol":"EGFR",
+   "targetName":"epidermal growth factor receptor",
+   "diseaseLabel":"cancer",
+   "id":"08aee3a7d66d4620bfa6cb97a3771cf5c4356255",
+   "score":1.0
+}
+```
+
+###  sourceId=slapenrich/ sourceId=sysbio/ sourceId=uniprot\_literature/
 
 
 
