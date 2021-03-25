@@ -1,5 +1,28 @@
 # OpenTarget  Processed Data
 
+## Data
+
+aotf/-&gt;  clickhouse \| elasticsearch  
+associations/  
+cancerBiomarkers/  
+disease\_hpo/  
+diseases/  
+drugs/  
+eco/  
+evidences/  
+expression/  
+hpo/  
+interactions/  
+interactions\_evidence/  
+knownDrugs/  
+mousePhenotypes/  
+openfda-faers/  
+otar\_projects/  
+reactome/  
+search/  
+so/  
+targets/
+
 ## AOT-ClickHouse
 
 {% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/aotf/clickhouse/" %}
