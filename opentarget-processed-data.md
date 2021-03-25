@@ -468,6 +468,8 @@ load\_cancerbiomarker.sh
 }
 ```
 
+### sourceId=chembl/
+
 ```text
 {
    "datasourceId":"chembl",
@@ -492,4 +494,167 @@ load\_cancerbiomarker.sh
    "score":0.2
 }
 ```
+
+### sourceId=clingen/
+
+```text
+{
+   "datasourceId":"clingen",
+   "targetId":"ENSG00000198668",
+   "diseaseFromSourceId":"HP_0001657",
+   "confidence":"Definitive",
+   "targetFromSourceId":"ENSG00000198668",
+   "datatypeId":"genetic_literature",
+   "diseaseFromSource":"long QT syndrome",
+   "allelicRequirements":[
+      "Autosomal Dominant"
+   ],
+   "diseaseId":"HP_0001657",
+   "studyId":"4a150cd9-e16b-4992-8cc7-5ccec44b4d6b--2018-09-25T16:00:00",
+   "targetSymbol":"CALM1",
+   "targetName":"calmodulin 1",
+   "diseaseLabel":"Prolonged QT interval",
+   "id":"373c02866feccc6f9e98cbaf1888bc18ba7131b0",
+   "score":1.0
+}
+```
+
+###  sourceId=crispr/
+
+```text
+{
+   "datasourceId":"crispr",
+   "targetId":"ENSG00000182197",
+   "diseaseFromSourceId":"EFO_0000178",
+   "resourceScore":0.528333,
+   "literature":[
+      "30971826"
+   ],
+   "targetFromSourceId":"ENSG00000182197",
+   "datatypeId":"affected_pathway",
+   "diseaseFromSource":"Gastric Carcinoma",
+   "diseaseCellLines":[
+      "23132-87",
+      "HGC-27",
+      "HSC-39",
+      "KATOIII",
+      "MKN28",
+      "NCI-N87",
+      "NUGC-3",
+      "SNU-1",
+      "SNU-16",
+      "TMK-1",
+      "AGS",
+      "RERF-GC-1B",
+      "SCH",
+      "IM-95",
+      "GCIY",
+      "MKN1",
+      "Hs-746T",
+      "TGBC11TKB"
+   ],
+   "diseaseId":"EFO_0000178",
+   "targetSymbol":"EXT1",
+   "targetName":"exostosin glycosyltransferase 1",
+   "diseaseLabel":"gastric carcinoma",
+   "id":"082844530297bc16233b43cd10dd779860f8a34c",
+   "score":0.528333
+}
+```
+
+###  sourceId=europepmc/
+
+```text
+{
+   "datasourceId":"europepmc",
+   "targetId":"ENSG00000185664",
+   "diseaseFromSourceId":"Orphanet_104",
+   "resourceScore":5.2,
+   "literature":[
+      "29996615"
+   ],
+   "textMiningSentences":[
+      {
+         "dEnd":78,
+         "dStart":75,
+         "section":"abstract",
+         "tEnd":42,
+         "tStart":39,
+         "text":"Compared to carriers, the amplitude of P100 was obviously decreased in the LHON patients[ (5.6Â±2.6) Î¼V vs. (15.6Â±9.6) Î¼V, t=2.880, P=0.006]."
+      }
+   ],
+   "targetFromSourceId":"P40967",
+   "datatypeId":"literature",
+   "diseaseFromSource":"LHON",
+   "diseaseId":"Orphanet_104",
+   "targetSymbol":"PMEL",
+   "targetName":"premelanosome protein",
+   "diseaseLabel":"Leber hereditary optic neuropathy",
+   "id":"000066f3a6dbe79960c194206775655ed6e8dc08",
+   "score":0.052000000000000005
+}
+```
+
+###  sourceId=eva/
+
+```text
+{
+   "datasourceId":"eva",
+   "targetId":"ENSG00000185920",
+   "diseaseFromSourceId":"Orphanet_377",
+   "variantFunctionalConsequenceId":"SO_0001574",
+   "literature":[
+      "15604628",
+      "20301330",
+      "21304560",
+      "25394175"
+   ],
+   "confidence":"criteria provided, single submitter",
+   "targetFromSourceId":"ENSG00000185920",
+   "clinicalSignificances":[
+      "likely pathogenic"
+   ],
+   "datatypeId":"genetic_association",
+   "diseaseFromSource":"gorlin syndrome",
+   "diseaseId":"Orphanet_377",
+   "studyId":"RCV001209501",
+   "targetSymbol":"PTCH1",
+   "targetName":"patched 1",
+   "diseaseLabel":"Gorlin syndrome",
+   "id":"000cc3016d89e387a0681abeb02d3df05878ff2c",
+   "score":1.02
+}
+```
+
+###  sourceId=eva\_somatic/
+
+```text
+{
+   "datasourceId":"eva_somatic",
+   "targetId":"ENSG00000168036",
+   "diseaseFromSourceId":"EFO_0001416",
+   "confidence":"no assertion criteria provided",
+   "targetFromSourceId":"ENSG00000168036",
+   "clinicalSignificances":[
+      "likely pathogenic"
+   ],
+   "datatypeId":"somatic_mutation",
+   "diseaseFromSource":"uterine cervical neoplasms",
+   "allelicRequirements":[
+      "Somatic mutation"
+   ],
+   "variantRsId":"rs28931588",
+   "diseaseId":"EFO_0001416",
+   "studyId":"RCV000422380",
+   "targetSymbol":"CTNNB1",
+   "targetName":"catenin beta 1",
+   "diseaseLabel":"cervical adenocarcinoma",
+   "id":"01eff59074ab7201937a59728685a47e86f56879",
+   "score":1.0
+}
+```
+
+###  sourceId=expression\_atlas/ sourceId=gene2phenotype/ sourceId=genomics\_england/ sourceId=intogen/ sourceId=ot\_genetics\_portal/ sourceId=phenodigm/ sourceId=phewas\_catalog/ sourceId=progeny/ sourceId=reactome/ sourceId=slapenrich/ sourceId=sysbio/ sourceId=uniprot\_literature/
+
+
 
