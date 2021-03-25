@@ -1,4 +1,8 @@
-# Open target in Google Cloud
+# Install Open Targets  to GCP
+
+**GCP account** 
+
+     **** [**ds5362165@gmail.com**](mailto:ds5362165@gmail.com)
 
 **Install NVM** 
 
@@ -119,7 +123,7 @@ sudo yum install sbt
  setsid nohup sbt run &
 ```
 
-**Check db in ES**
+**Check data in ES**
 
 ```text
 curl -X GET "localhost:9200/_cat/indices/"
@@ -127,4 +131,10 @@ curl -X GET "localhost:9200/_cat/indices/"
 ```
 
 
+
+**visit :**
+
+OTG:  http://34.121.72.138:3000 
+
+OTP:   http://35.186.175.242:3000 
 
