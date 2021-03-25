@@ -136,5 +136,5 @@ curl -X GET "localhost:9200/_cat/indices/"
 
 OTG:  http://34.121.72.138:3000 
 
-OTP: 
+OTP:   http://35.186.175.242:3000 
 
