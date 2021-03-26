@@ -1,6 +1,8 @@
-# OpenTarget  Processed Data
+# ETL processed data
 
 ## Data
+
+**from raw data \[ETL\] to importable data.** 
 
 aotf/-&gt;  clickhouse \| elasticsearch  
 associations/  
