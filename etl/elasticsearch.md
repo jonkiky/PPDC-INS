@@ -1,6 +1,8 @@
 # ElasticSearch
 
-Index:
+
+
+**Index:**
 
 ```text
 {
@@ -26,7 +28,15 @@ Index:
 }
 ```
 
-Index\_search
+**Note:**
+
+The `nested` type is a specialised version of the [`object`](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html) data type that allows arrays of objects to be indexed in a way that they can be queried independently of each other.
+
+
+
+
+
+**Index\_search**
 
 ```text
 {
@@ -130,7 +140,7 @@ Index\_search
 }
 ```
 
-index\__known\_drougs_
+**index\_**_**known\_drougs**_
 
 ```text
 {

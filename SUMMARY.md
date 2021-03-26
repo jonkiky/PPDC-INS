@@ -8,8 +8,8 @@
 * [Install Open Targets To AWS](install-open-targets-to-aws.md)
 * [ETL](etl/README.md)
   * [OpenTarget  Processed Data](etl/opentarget-processed-data.md)
-  * [GraphQL Schema](etl/graphql-schema.md)
   * [Clickhouse](etl/clickhouse.md)
   * [ElasticSearch](etl/elasticsearch.md)
+  * [GraphQL Schema](etl/graphql-schema.md)
 * [Errors](errors.md)
 
