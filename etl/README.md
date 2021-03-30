@@ -18,3 +18,7 @@ load the data, please use the following scripts: • ElasticSearch: [https://git
 
 ClickHouse: [https://github.com/opentargets/platform-etl-backend/tree/21.02/clickhouse](https://github.com/opentargets/platform-etl-backend/tree/21.02/clickhouse)
 
+
+
+![](../.gitbook/assets/untitled-document.png)
+
