@@ -94,8 +94,6 @@ curl -XDELETE localhost:9200/all
 
 **run Clickhouse**
 
-\*\*\*\*
-
 ```text
   sudo systemctl start clickhouse-server
   250  sudo systemctl start clickhouse-server
@@ -129,8 +127,6 @@ sudo yum install sbt
 curl -X GET "localhost:9200/_cat/indices/"
 
 ```
-
-
 
 **visit :**
 

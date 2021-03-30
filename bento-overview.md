@@ -20,10 +20,10 @@
 
 ## **Support**
 
-**Backend:  Ming ying**   [**ming.ying@nih.gov**](mailto:ming.ying@nih.gov) ****
+Backend:  Ming ying   [ming.ying@nih.gov](mailto:ming.ying@nih.gov) 
 
-**Front-end:  Sri kiran**   [**srikiran.chaparala@nih.gov**](mailto:srikiran.chaparala@nih.gov)
+Front-end:  Sri kiran   [srikiran.chaparala@nih.gov](mailto:srikiran.chaparala@nih.gov)
 
-                      **Ajay**  [**ajay.doddapaneni@nih.gov**](mailto:ajay.doddapaneni@nih.gov)   
+                      Ajay  [ajay.doddapaneni@nih.gov](mailto:ajay.doddapaneni@nih.gov)   
 ****
 

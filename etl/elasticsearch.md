@@ -1,7 +1,5 @@
 # ElasticSearch
 
-
-
 **Index:**
 
 ```text

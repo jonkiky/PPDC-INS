@@ -1,18 +1,18 @@
 # Install Open Targets To AWS
 
-Three instances :
+**Three instances :**
 
-OTG:  
+**OTG:**  
 
       front-end 172.18.10.31:3006
 
-OTP : 
+**OTP :** 
 
       Front-end : 172.18.10.184:3000
 
      database & Backend: @172.18.10.41:9000
 
-Connects to instance:
+**Connects to instance:**
 
      Step1 : login bastion host. 
 
@@ -29,7 +29,7 @@ ssh -i .ssh/devops centos@172.18.10.31
 
 
 
-Install NVM
+**Install NVM**
 
 {% embed url="https://github.com/nvm-sh/nvm" %}
 
@@ -88,6 +88,8 @@ yarn
 
 
 Visit :
+
+{% embed url="http://bento-alb-qa-529669248.us-east-1.elb.amazonaws.com:3006" %}
 
 {% embed url="http://bento-alb-qa-529669248.us-east-1.elb.amazonaws.com:3000" %}
 
