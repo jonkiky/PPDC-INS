@@ -10,17 +10,21 @@ The new version is expected to be released in Q1 2021.
 
 ## **Github Repositories**
 
- ****[**platform-app**](https://github.com/opentargets/platform-app) **-** React UI
+ [platform-app](https://github.com/opentargets/platform-app) - React UI
 
-[**platform-api-beta**](https://github.com/opentargets/platform-api-beta) **-** GraphQL API
+[platform-api-beta](https://github.com/opentargets/platform-api-beta) - GraphQL API
 
-[**platform-input-support**](https://github.com/opentargets/platform-input-support) **-** scripts that process and prepare data for our ETL pipelines 
+[platform-input-support](https://github.com/opentargets/platform-input-support) - scripts that process and prepare data for our ETL pipelines 
 
-[**platform-etl-backend**](https://github.com/opentargets/platform-etl-backend) **-** ETL pipelines to generate associations, evidence, and entity indices 
+[platform-etl-backend](https://github.com/opentargets/platform-etl-backend) - ETL pipelines to generate associations, evidence, and entity indices 
 
-\*\*\*\*[**platform-etl-openfda-faers** ](https://github.com/opentargets/platform-etl-openfda-faers) **-** ETL pipeline to process OpenFDA adverse events data
+[platform-etl-openfda-faers ](https://github.com/opentargets/platform-etl-openfda-faers) - ETL pipeline to process OpenFDA adverse events data
 
-[**json\_schema**](https://github.com/opentargets/json_schema) **-** evidence object schema used by ETL pipelines for evidence and association scoring  
+[json\_schema](https://github.com/opentargets/json_schema) - evidence object schema used by ETL pipelines for evidence and association scoring
+
+[genetics-app ](https://github.com/opentargets/genetics-app) ****-- frontend repo for genetics app
+
+[OT evidence generators](https://github.com/opentargets/evidence_datasource_parsers) .-- OT evidence generators   
 ****
 
 ## Data
