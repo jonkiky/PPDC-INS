@@ -27,6 +27,16 @@ The new version is expected to be released in Q1 2021.
 [OT evidence generators](https://github.com/opentargets/evidence_datasource_parsers) .-- OT evidence generators   
 ****
 
+\*\*\*\*
+
+**Forked Repositories**
+
+Platform-api-beta : [https://github.com/CBIIT/ppdc-otp-backend](https://github.com/CBIIT/ppdc-otp-backend)
+
+platform-app:  [https://github.com/CBIIT/ppdc-otp-frontend](https://github.com/CBIIT/ppdc-otp-frontend)
+
+genetics-app:  [https://github.com/CBIIT/ppdc-otg-frontend](https://github.com/CBIIT/ppdc-otg-frontend)
+
 ## Data
 
 The database dump files are available via FTP from [http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/). 
