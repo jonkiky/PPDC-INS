@@ -66,3 +66,7 @@ for drug: elastic search://hh-rke-wp-webadmin-04-worker-4.caas.ebi.ac.uk
 
 **annotations\_qc:** [http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/other/qc\_annotations/](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/other/qc_annotations/)
 
+
+
+
+
