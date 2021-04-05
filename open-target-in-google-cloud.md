@@ -15,10 +15,7 @@
 ```text
 sudo yum install -y make gcc*
 
-curl --silent --location 
-https://dl.yarnpkg.com/rpm/yarn.repo
- | sudo tee /etc/yum.repos.d/yarn.repo sudo rpm --import 
-https://dl.yarnpkg.com/rpm/pubkey.gpg
+curl --silent --location  https://dl.yarnpkg.com/rpm/yarn.repo  | sudo tee /etc/yum.repos.d/yarn.repo sudo rpm --import  https://dl.yarnpkg.com/rpm/pubkey.gpg
 
 sudo yum install yarn
 ```
