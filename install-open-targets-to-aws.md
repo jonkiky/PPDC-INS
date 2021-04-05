@@ -23,9 +23,9 @@ connects from  bastion host
 
 ssh -i .ssh/devops centos@172.18.10.184
 
-ssh -i .ssh/devops centos@172.18.10.41
-
 ssh -i .ssh/devops centos@172.18.10.31
+
+ssh -i .ssh/devops centos@172.18.10.41
 
 
 
@@ -85,7 +85,13 @@ yarn install
 yarn
 ```
 
+**Download OTG output files to VM**
 
+```text
+sudo yum install wget
+wget -r ftp://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/
+
+```
 
 Visit :
 
