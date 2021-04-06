@@ -26,7 +26,7 @@ sudo yum install yarn
 sudo yum install git
 ```
 
-**Upload data files to Google VM**
+**Up**load **data files to Google VM**
 
 ```text
 scp -r -i ~/.ssh/google_compute_engine /Users/jonkiky/Documents/work/openTarget/database/ ds5362165@34.86.72.36:/home/ds5362165/db
