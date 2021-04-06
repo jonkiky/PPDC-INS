@@ -63,6 +63,15 @@ sudo yum install java-1.8.0-openjdk
 
 **Import data to clickhouse and ES**
 
+#### Install Python 3
+
+Now that the environment is up to date, all we need do to install Python 3 is run the following command.
+
+```text
+[root@centos7 ~]# yum install -y python3
+
+```
+
 **install pip** 
 
 {% embed url="https://linuxize.com/post/how-to-install-pip-on-centos-7/" %}
