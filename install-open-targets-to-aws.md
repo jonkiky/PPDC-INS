@@ -103,5 +103,18 @@ Nginx
 
 {% embed url="https://www.javatpoint.com/installing-nginx-on-mac" %}
 
+Nginx issue: why don't work react-router-dom after build?
 
+
+
+There is a very `specific reason` behind this scenario.
+
+_**1st solution :**_ react is a single page application so when you have build the application , server know only about index.html so for any other `url` you will have to `configure` server for `fallback mechanism to index.html` and after react app will take care of url handling.
+
+_**2nd solution**_: if you use `hash router` than this issue will not occur.  
+the reason behind using hash router is [know more about hashrouter and it's use cases](https://stackoverflow.com/a/51976069/8138584)
+
+```text
+import { HashRouter as Router, Route, Switch } from "react-router-dom" 
+```
 
