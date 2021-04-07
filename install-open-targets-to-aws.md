@@ -99,5 +99,9 @@ Visit :
 
 {% embed url="http://bento-alb-qa-529669248.us-east-1.elb.amazonaws.com:3000" %}
 
+Nginx 
+
+{% embed url="https://www.javatpoint.com/installing-nginx-on-mac" %}
+
 
 
