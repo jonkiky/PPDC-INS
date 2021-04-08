@@ -4,7 +4,14 @@
 
 The new version of open target:  [https://beta.targetvalidation.org/](https://beta.targetvalidation.org/)
 
-The new version is expected to be released in Q1 2021.   
+The new version is expected to be released in Q1 2021. 
+
+open targets docs:[https://docs.targetvalidation.org/](https://docs.targetvalidation.org/) 
+
+  
+The Open Targets Platform \([https://www](https://www). targetvalidation.org/\) provides users with a queryable knowledgebase and user interface to aid systematic target identification and prioritisation for drug discovery based upon underlying evidence. It is publicly available and the underlying code is open source. Since our last update two years ago, we have had 10 releases to maintain and continuously improve evidence for target–disease relationships from 20 different data sources. 
+
+  
   
 ****
 

@@ -2,7 +2,7 @@
 
 ## Data
 
-**from raw data \[ETL\] to importable data.** 
+**Data after ETL process \(20\)**
 
 aotf/-&gt;  clickhouse \| elasticsearch  
 associations/  
@@ -25,7 +25,7 @@ search/
 so/  
 targets/
 
-## AOT-ClickHouse
+## AOT for ClickHouse
 
 {% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/aotf/clickhouse/" %}
 
@@ -46,7 +46,7 @@ targets/
 
 ```
 
-## AOT-Elasticsearch 
+## AOT for Elasticsearch 
 
 -- load script ./load\_evidences\_aotf.sh
 
