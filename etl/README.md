@@ -22,51 +22,53 @@ Config.file : [https://github.com/opentargets/platform-input-support/blob/master
 
 Yaml.file : [https://storage.googleapis.com/open-targets-data-releases/21.02/templates/template.mrtarget.data.21.02.yml](https://storage.googleapis.com/open-targets-data-releases/21.02/templates/template.mrtarget.data.21.02.yml) 
 
-## Data
+## Platform-input-support:
 
-### **Source**
+Collect data from various sources, put them into GCP.   
 
-the database dump files are available via FTP from [http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/). 
+List of available steps:
 
-load the data, please use the following scripts: • ElasticSearch: [https://github.com/opentargets/platform-etl-backend/tree/21.02/elasticsearch](https://github.com/opentargets/platform-etl-backend/tree/21.02/elasticsearch) 
+* annotations
+* annotations\_qc
+* annotations\_from\_buckets
+* ChEMBL
+* chemical\_probes
+* drug
+* eco
+* efo
+* ensembl
+* evidences
+* interactions
+* known\_target\_safety
+* tep
 
-ClickHouse: [https://github.com/opentargets/platform-etl-backend/tree/21.02/clickhouse](https://github.com/opentargets/platform-etl-backend/tree/21.02/clickhouse)
+Each step is an individual way to collect data. 
 
-### **Notes for data downloading**
+The input data is a config file, which contains the data source:   
+[https://github.com/opentargets/platform-input-support/blob/master/config.yaml](https://github.com/opentargets/platform-input-support/blob/master/config.yaml) 
 
-**chemical\_probes, tep, known\_target\_safety data:** 
+The output data are stored in three folders:
 
-replace the gkey and gid with value given in the config file. [https://docs.google.com/spreadsheets/d/{gkey}/export?format=tsv&gid={gid}](https://docs.google.com/spreadsheets/d/{gkey}/export?format=tsv&gid={gid}) for example :
-
-* gkey: 1VL3eHGpvJMaQ7LYp0Kp1plEo-NueP3CT7FUCrW0p2dg
-
-  gid: 1686598114
-
-  After replace the keys:
-
-  [https://docs.google.com/spreadsheets/d/1VL3eHGpvJMaQ7LYp0Kp1plEo-NueP3CT7FUCrW0p2dg/export?format=tsv&gid=1686598114](https://docs.google.com/spreadsheets/d/1VL3eHGpvJMaQ7LYp0Kp1plEo-NueP3CT7FUCrW0p2dg/export?format=tsv&gid=1686598114)
-
-**Annotations\_from\_buckets**
-
-\*\*\*\*[http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/annotation-files/](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/annotation-files/)
-
-**Ensembl:** 
-
-mysql+mysqldb://anonymous@ensembldb.ensembl.org:3337/homo\_sapiens\_core\_102\_38
-
-for drug: elastic search://hh-rke-wp-webadmin-04-worker-4.caas.ebi.ac.uk
-
-**Evidences**
+[http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/annotation-files/](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/annotation-files/)
 
 [http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/evidence-files/](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/evidence-files/)
 
-**subset of evidences**
+[http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/evidence-files-subsets/](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/evidence-files-subsets/)
 
- [http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/evidence-files-subsets/](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/evidence-files-subsets/)
+The  mrtage yam file contains all the locations of collected data, is part of the output 
 
-**annotations\_qc:** [http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/other/qc\_annotations/](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/input/other/qc_annotations/)
+[https://storage.googleapis.com/open-targets-data-releases/21.02/templates/template.mrtarget.data.21.02.yml](https://storage.googleapis.com/open-targets-data-releases/21.02/templates/template.mrtarget.data.21.02.yml)  
 
 
+\*\*\*\*\*\*\*\*\*Note
+
+this is only part of the data, the data from FAERS  treat separately. 
+
+
+
+
+
+### \*\*\*\*
 
 ![](../.gitbook/assets/platform-input-support.jpeg)
 
