@@ -68,5 +68,7 @@ for drug: elastic search://hh-rke-wp-webadmin-04-worker-4.caas.ebi.ac.uk
 
 
 
+![](../.gitbook/assets/platform-input-support.jpeg)
+
 
 
