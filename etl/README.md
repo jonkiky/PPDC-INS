@@ -101,6 +101,10 @@ ChEMBL's ES instance is only available from within the EMBL-EBI VPN. If you need
 
 [**data\_pipeline**](https://github.com/opentargets/data_pipeline)  ****to process different data files that provide evidence for the target-disease associations in the Open Targets Platform. ****
 
+{% embed url="https://github.com/opentargets/data\_pipeline" %}
+
+
+
 
 
 
