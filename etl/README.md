@@ -156,6 +156,8 @@ Inputs:
 
 Command line template: https://github.com/opentargets/data\_pipeline/blob/master/mrtarget.ops.yml
 
+ES: https://github.com/opentargets/data\_pipeline/blob/master/mrtarget.es.yml
+
 ### **--rea Reactome**
 
 ReactomeProcess\(args.elasticseach\_nodes, es\_config.rea.name, es\_config.rea.mapping, es\_config.rea.setting, data\_config.reactome\_pathway\_data, data\_config.reactome\_pathway\_relation, args.rea\_workers\_writer, args.rea\_queue\_write\)
@@ -163,6 +165,15 @@ ReactomeProcess\(args.elasticseach\_nodes, es\_config.rea.name, es\_config.rea.m
 process\_all\(\)
 
 -&gt;
+
+1. Generate a direct graph
+
+Node from : reactome-pathway-data: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ReactomePathways-2021-02-09.txt](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ReactomePathways-2021-02-09.txt)   
+Edge from: reactome-pathway-relation: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ReactomePathwaysRelation-2021-02-09.txt](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ReactomePathwaysRelation-2021-02-09.txt)
+
+Node:{ id, name, species }
+
+Edge:{id, child\_id}
 
 
 
