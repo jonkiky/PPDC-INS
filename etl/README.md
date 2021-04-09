@@ -146,9 +146,19 @@ This step will create the index `${DATA_RELEASE_VERSION}_search-data` which is u
 This step will compute the target-to-target and disease-to-disease relationships. It requires `--as` associations step.  
 
 
+![](../.gitbook/assets/screen-shot-2021-04-09-at-1.33.13-pm.png)
 
 
 
+
+
+### **--rea Reactome**
+
+ReactomeProcess\(args.elasticseach\_nodes, es\_config.rea.name, es\_config.rea.mapping, es\_config.rea.setting, data\_config.reactome\_pathway\_data, data\_config.reactome\_pathway\_relation, args.rea\_workers\_writer, args.rea\_queue\_write\)
+
+process\_all\(\)
+
+-&gt;
 
 
 
