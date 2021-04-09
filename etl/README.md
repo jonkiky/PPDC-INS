@@ -105,6 +105,49 @@ ChEMBL's ES instance is only available from within the EMBL-EBI VPN. If you need
 
 
 
+#### Overview
+
+The pipeline can be broken down in a number of steps, each of which can be run as a separate command. Each command typically reads data from one or more sources \(such as a URL or local file, or Elasticsearch\) and writes into one or more Elasticsearch indexes.
+
+**--rea Reactome**
+
+Downloads and processes information into a local index for performance.
+
+**--hpa Expression**
+
+Downloads and processes information into a local index for performance.
+
+**--gen Target**
+
+Downloads and processes information from various sources. Is built around a "plugin" structure. Constructs an Elasticsarch index containg most of the information about each Target within the platform. It requires `--rea` reactome step. Note: HGNC,Ensembl,Uniprot plugins should always be first, as they initialize the gene list used in other plugins. Note: Chembl is required by the `--sea` step below.
+
+**--efo Disease**
+
+Downloads and processes the Experimental Factor Ontology, as well as Human Phenotype Ontology and other sources. Constructs an Elasticsarch index containg the information about each Disease within the platform.
+
+**--eco Evidence Code**
+
+Downloads and processes the Evidence Code Ontology and Sequence Ontology.
+
+**--val Validation**
+
+Read in evidence strings \(either from filesystem or URLs\) and validate. The validation includes syntatic JSON schema validation, as well as ensuring that the disease and target are appropriate. This step will also make some corrections to evidence, where appropriate. For example,replacing Uniprot protein identifiers with Ensembl gene identifiers. It requires `--gen` target, `--efo` disease, and `--eco` evidence code steps. It is expecting JSON matching schema [1.6.0](https://raw.githubusercontent.com/opentargets/json_schema/1.6.0/opentargets.json).
+
+**--as Associations**
+
+This step reads the valide evidence strings and calculates the appropriate assocations as well as calculated their scores. It requires `--val` validation, and `--hpa` expression steps.
+
+**--sea Search**
+
+This step will create the index `${DATA_RELEASE_VERSION}_search-data` which is used for the search function in the platform. It requires `--as` associations step.
+
+**--ddr Relationships**
+
+This step will compute the target-to-target and disease-to-disease relationships. It requires `--as` associations step.  
+
+
+
+
 
 
 
