@@ -150,7 +150,11 @@ This step will compute the target-to-target and disease-to-disease relationships
 
 
 
+Inputs:
 
+{% embed url="https://docs.targetvalidation.org/technical-pipeline/technical-notes" %}
+
+Command line template: https://github.com/opentargets/data\_pipeline/blob/master/mrtarget.ops.yml
 
 ### **--rea Reactome**
 
