@@ -158,7 +158,9 @@ Command line template: https://github.com/opentargets/data\_pipeline/blob/master
 
 ES: https://github.com/opentargets/data\_pipeline/blob/master/mrtarget.es.yml
 
-### **--rea Reactome**
+### **--rea Reactome** 
+
+**part of annotations data**
 
 ReactomeProcess\(args.elasticseach\_nodes, es\_config.rea.name, es\_config.rea.mapping, es\_config.rea.setting, data\_config.reactome\_pathway\_data, data\_config.reactome\_pathway\_relation, args.rea\_workers\_writer, args.rea\_queue\_write\)
 
