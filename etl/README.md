@@ -190,10 +190,28 @@ set of dicts :dict\(id=node, label=node\_data\['name'\], path=paths, children=ch
 
 
 
+**--hpa Expression**
 
+\*\*\*\*
 
+HPAProcess\(args.elasticseach\_nodes, es\_config.hpa.name, es\_config.hpa.mapping, es\_config.hpa.setting, data\_config.tissue\_translation\_map, data\_config.tissue\_curation\_map, data\_config.hpa\_normal\_tissue, data\_config.hpa\_rna\_level, data\_config.hpa\_rna\_value, data\_config.hpa\_rna\_zscore, args.hpa\_workers\_writer, args.hpa\_queue\_write\)
 
+**inputs:**
 
+args.elasticseach\_nodes,   
+ es\_config.hpa.name,   
+ es\_config.hpa.mapping,   
+ es\_config.hpa.setting,   
+ data\_config.tissue\_translation\_map,   
+ data\_config.tissue\_curation\_map,   
+ data\_config.hpa\_normal\_tissue,   
+ data\_config.hpa\_rna\_level,   
+ data\_config.hpa\_rna\_value,   
+ data\_config.hpa\_rna\_zscore,   
+ args.hpa\_workers\_writer,   
+ args.hpa\_queue\_write
+
+  
 
 
 
