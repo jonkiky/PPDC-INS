@@ -166,7 +166,7 @@ ReactomeProcess\(args.elasticseach\_nodes, es\_config.rea.name, es\_config.rea.m
 
 process\_all\(\)
 
--&gt;
+-&gt; Reactome.py 
 
 1. Generate a direct graph
 
@@ -176,6 +176,25 @@ Edge from: reactome-pathway-relation: [https://storage.googleapis.com/open-targe
 Node:{ id, name, species }
 
 Edge:{id, child\_id}
+
+2.  Save Graph to elastic search   
+mapping: rea\_mappings.json
+
+setting: rea\_settings.json 
+
+docs = generate\_documents\(self.g\)
+
+actions = elasticsearch\_actions\(docs, self.es\_index\)
+
+set of dicts :dict\(id=node, label=node\_data\['name'\], path=paths, children=children, parents=parents, is\_root=node == 'root', ancestors=list\(ancestors\) \)
+
+
+
+
+
+
+
+
 
 
 
