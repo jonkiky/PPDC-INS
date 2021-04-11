@@ -199,17 +199,19 @@ HPAProcess\(args.elasticseach\_nodes, es\_config.hpa.name, es\_config.hpa.mappin
 **inputs:**
 
 args.elasticseach\_nodes,   
- es\_config.hpa.name,   
+ es\_config.  
+ hpa.name,   
  es\_config.hpa.mapping,   
  es\_config.hpa.setting,   
- data\_config.tissue\_translation\_map,   
- data\_config.tissue\_curation\_map,   
- data\_config.hpa\_normal\_tissue,   
- data\_config.hpa\_rna\_level,   
- data\_config.hpa\_rna\_value,   
- data\_config.hpa\_rna\_zscore,   
+ data\_config.tissue\_translation\_map: none  
+ data\_config.tissue\_curation\_map: none  
+ hpa-normal-tissue: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/normal\_tissue-2021-02-09.tsv](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/normal_tissue-2021-02-09.tsv)  
+ hpa-rna-level: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/baseline\_expression\_binned-2020-05-07.tsv](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/baseline_expression_binned-2020-05-07.tsv)  
+ hpa-rna-value: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/baseline\_expression\_counts-2020-05-07.tsv](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/baseline_expression_counts-2020-05-07.tsv)  
+ hpa-rna-zscore: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/baseline\_expression\_zscore\_binned-2020-05-07.tsv](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/baseline_expression_zscore_binned-2020-05-07.tsv)  
  args.hpa\_workers\_writer,   
- args.hpa\_queue\_write
+ args.hpa\_queue\_write  
+
 
   
 
