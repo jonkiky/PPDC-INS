@@ -231,6 +231,104 @@ process\_join\(\)-&gt;  melting retrieve\_normal\_tissue\_data and retrieve\_rna
 
 store\_data-&gt; save hpa\_merged\_table to elasticsearch
 
+### **--gen Target**
+
+```text
+ process = GeneManager(args.elasticseach_nodes, es_config.gen.name, 
+            es_config.gen.mapping, es_config.gen.setting, 
+            args.gen_plugin_places, data_config.gene_data_plugin_names,
+            data_config, es_config,
+            args.gen_workers_writer, args.gen_queue_write )
+        if not args.qc_only:
+            process.merge_all(args.dry_run)
+        if not args.skip_qc:
+            qc_metrics.update(process.qc(es, es_config.gen.name))  
+```
+
+**inputs:**
+
+args.elasticseach\_nodes  
+ es\_config.gen.name  
+ es\_config.gen.mapping  
+ es\_config.gen.setting  
+ args.gen\_plugin\_places  
+ data\_config.gene\_data\_plugin\_names**:  null???**  
+ data\_config  
+ es\_config  
+ args.gen\_workers\_writer  
+ args.gen\_queue\_write
+
+
+
+plugin system : [http://yapsy.sourceforge.net/\#](http://yapsy.sourceforge.net/#)
+
+```text
+plugin.plugin_object.merge_data(self.genes, 
+                es, None, 
+                self.data_config, self.es_config)
+```
+
+the plugin is read from somewhere unknown. 
+
+It seems like the genes obj is modified within plugin.
+
+```text
+ gene._create_suggestions()
+```
+
+reorder gene's field, add suggestion filed, code below shows the content of suggestions. 
+
+```text
+    field_order = [self.approved_symbol,
+                       self.approved_name,
+                       self.symbol_synonyms,
+                       self.name_synonyms,
+                       self.previous_symbols,
+                       self.previous_names,
+                       self.uniprot_id,
+                       self.uniprot_accessions,
+                       self.ensembl_gene_id,
+                       self.entrez_gene_id,
+                       self.refseq_ids
+                       ]
+   self._private['suggestions'] = dict(input = [],
+                                              output = self.approved_symbol,
+                                              payload = dict(gene_id = self.id,
+                                                             gene_symbol = self.approved_symbol,
+                                                             gene_name = self.approved_name),
+                                              )
+
+
+        for field in field_order:
+            if isinstance(field, list):
+                self._private['suggestions']['input'].extend(field)
+            else:
+                self._private['suggestions']['input'].append(field)
+        try:
+            self._private['suggestions']['input'] = [x.lower() for x in self._private['suggestions']['input']]
+        except:
+            print("error", repr(self._private['suggestions']['input']))
+```
+
+```text
+gene._create_facets()
+```
+
+add pathway info in gene.\_create\_facets\(\) step.  code below shows how it does. 
+
+```text
+ self._private['facets']['reactome']=dict(pathway_code = pathways,
+              # pathway_name=pathways,
+               pathway_type_code=pathway_types,
+              # pathway_type_name=pathway_types,
+  )
+```
+
+  
+Then gene is stored in elastic search. 
+
+### **--efo Disease**
+
 
 
 
