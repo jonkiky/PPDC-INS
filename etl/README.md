@@ -472,3 +472,99 @@ generate eco object, store into database.
 
 
 
+### **--val Validation** 
+
+TO BE DONE
+
+###  **--as Associations**
+
+```text
+if args.assoc:
+        process = ScoringProcess(args.elasticseach_nodes, es_config.asc.name, 
+                es_config.asc.mapping, es_config.asc.setting,
+                es_config.gen.name, es_config.val_right.name, es_config.hpa.name, es_config.efo.name,
+                args.as_workers_writer, args.as_workers_production, args.as_workers_score, 
+                args.as_queue_score, args.as_queue_production, args.as_queue_write,
+                args.as_cache_hpa, args.as_cache_efo, args.as_cache_target, 
+                data_config.scoring_weights, data_config.is_direct_do_not_propagate,
+                data_config.datasources_to_datatypes)
+        if not args.qc_only:
+            process.process_all(args.dry_run)
+```
+
+**inputs:**
+
+args.elasticseach\_nodes  
+ es\_config.asc.name  
+ es\_config.asc.mapping  
+ es\_config.asc.setting  
+ es\_config.gen.name  
+ es\_config.val\_right.name  
+ es\_config.hpa.name  
+ es\_config.efo.name  
+ args.as\_workers\_writer  
+ args.as\_workers\_production  
+ args.as\_workers\_score  
+ args.as\_queue\_score  
+ args.as\_queue\_production  
+ args.as\_queue\_write  
+ args.as\_cache\_hpa  
+ args.as\_cache\_efo  
+ args.as\_cache\_target  
+ data\_config.scoring\_weights  
+ data\_config.is\_direct\_do\_not\_propagate  
+ data\_config.datasources\_to\_datatypes
+
+**scoring\_weights**
+
+```text
+scoring_weights:
+  crisp: 1
+  europepmc: 0.2
+  expression_atlas: 0.2
+  phenodigm: 0.2
+  progeny: 0.5
+  slapenrich: 0.5
+  sysbio: 0.5
+```
+
+**is\_direct\_do\_not\_propagate:**
+
+```text
+is_direct_do_not_propagate:
+- expression_atlas
+```
+
+  
+**datasources\_to\_datatypes:** 
+
+```text
+datasources_to_datatypes:
+  cancer_gene_census: somatic_mutation
+  chembl: known_drug
+  clingen: genetic_association
+  crispr: affected_pathway
+  europepmc: literature
+  eva: genetic_association
+  eva_somatic: somatic_mutation
+  expression_atlas: rna_expression
+  gene2phenotype: genetic_association
+  genomics_england: genetic_association
+  gwas_catalog: genetic_association
+  intogen: somatic_mutation
+  ot_genetics_portal: genetic_association
+  phenodigm: animal_model
+  phewas_catalog: genetic_association
+  postgap: genetic_association
+  progeny: affected_pathway
+  reactome: affected_pathway
+  slapenrich: affected_pathway
+  sysbio: affected_pathway
+  uniprot_literature: genetic_association
+  uniprot_somatic: somatic_mutation
+```
+
+
+
+**process\_all:**
+
