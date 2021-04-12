@@ -223,7 +223,21 @@ process\_all
 ```
 
   
-retrieve\_normal\_tissue\_data-&gt; download data from hpa-normal-tissue, then generate CSV file .
+retrieve\_normal\_tissue\_data-&gt; download data from hpa-normal-tissue as CSV file, use it as a dictionary object.
+
+retrieve\_rna\_data:  read data from hpa-rna-level and hpa-rna-zscore, then  melting rna level table into geneid tissue level.
+
+process\_join\(\)-&gt;  melting retrieve\_normal\_tissue\_data and retrieve\_rna\_data, plus new format of expression \(dictionary\)
+
+store\_data-&gt; save hpa\_merged\_table to elasticsearch
+
+
+
+
+
+
+
+
 
 
 
