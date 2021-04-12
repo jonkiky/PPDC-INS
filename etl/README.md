@@ -414,6 +414,9 @@ Loads evidence from ECO, SO and the Open Targets evidence classes
 
 Namespace**??** classes\_paths??
 
+The codes below are from [https://github.com/opentargets/ontology-utils](https://github.com/opentargets/ontology-utils)  
+eco\_so.py
+
 ```text
 cttv = rdflib.Namespace(str("http://www.targetvalidation.org/disease"))
     ot = rdflib.Namespace(str("http://identifiers.org/eco"))
@@ -452,8 +455,6 @@ cttv = rdflib.Namespace(str("http://www.targetvalidation.org/disease"))
         ocr.rdf_graph.add([u, rdflib.RDFS.subClassOf, evidence_uri])
 
 ```
-
-
 
 
 
