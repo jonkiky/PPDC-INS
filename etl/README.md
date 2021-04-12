@@ -268,9 +268,7 @@ plugin.plugin_object.merge_data(self.genes,
                 self.data_config, self.es_config)
 ```
 
-the plugin is read from somewhere unknown. 
-
-It seems like the genes obj is modified within plugin.
+It seems like the genes obj is modified within a plugin.
 
 ```text
  gene._create_suggestions()
@@ -339,7 +337,7 @@ Then gene is stored in elastic search.
             process.process_all(args.dry_run)
 ```
 
-inputs:
+**inputs:**
 
 args.elasticseach\_nodes  
  es\_config.efo.name  
@@ -352,14 +350,108 @@ ontology-efo: [https://storage.googleapis.com/open-targets-data-releases/21.02/i
  args.efo\_workers\_writer  
  args.efo\_queue\_write
 
+**process\_all**
+
+```text
+def process_all(self, dry_run):
+        self._process_ontology_data()
+        self._store_efo(dry_run)
+
+```
+
+rprocess\_ontology\_data:
+
+refers to : [https://github.com/opentargets/ontology-utils](https://github.com/opentargets/ontology-utils)
+
+create a text block definition/description by joining others together
+
+build a set of all the relevant synonyms
+
+\*need to dig into ontology utils and EFO.py
+
+**\_store\_efo**
+
+store data into elasticsearch
 
 
 
+
+
+### **--eco Evidence Code** 
+
+```text
+process = EcoProcess(args.elasticseach_nodes, es_config.eco.name, 
+            es_config.eco.mapping, es_config.eco.setting,
+            data_config.ontology_eco, data_config.ontology_so,
+            args.eco_workers_writer, args.eco_queue_write)
+        if not args.qc_only:
+            process.process_all(args.dry_run)
+```
+
+**inputs:**
+
+args.elasticseach\_nodes  
+ es\_config.eco.name  
+ es\_config.eco.mapping  
+ es\_config.eco.setting  
+ data\_config.ontology-eco: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/ontology-eco-2021-02-09.owl](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/ontology-eco-2021-02-09.owl)  
+ data\_config.ontology-so: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/ontology-so-2021-02-09.owl](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/ontology-so-2021-02-09.owl)  
+ args.eco\_workers\_writer  
+ args.eco\_queue\_write
+
+**process\_all**
+
+```text
+def process_all(self, dry_run):
+        self._process_ontology_data()
+        self._store_eco(dry_run)
+```
 
   
+**process\_ontology\_data:**
 
+Loads evidence from ECO, SO and the Open Targets evidence classes
 
+Namespace**??** classes\_paths??
 
+```text
+cttv = rdflib.Namespace(str("http://www.targetvalidation.org/disease"))
+    ot = rdflib.Namespace(str("http://identifiers.org/eco"))
+
+    #namespace_manager = NamespaceManager(self.rdf_graph)
+    ocr.rdf_graph.namespace_manager.bind('cttv', cttv)
+    ocr.rdf_graph.namespace_manager.bind('ot',ot)
+
+    open_targets_terms = {
+        'http://www.targetvalidation.org/disease/cttv_evidence':'CTTV evidence',
+        'http://identifiers.org/eco/drug_disease':'drug-disease evidence',
+        'http://identifiers.org/eco/target_drug':'biological target to drug evidence',
+        'http://identifiers.org/eco/clinvar_gene_assignments':'ClinVAR SNP-gene pipeline',
+        'http://identifiers.org/eco/cttv_mapping_pipeline':'CTTV-custom annotation pipeline',
+        'http://identifiers.org/eco/GWAS':'Genome-wide association study evidence',
+        'http://identifiers.org/eco/GWAS_fine_mapping': 'Fine-mapping study evidence',
+        'http://identifiers.org/eco/somatic_mutation_evidence':'Somatic mutation evidence',
+        'http://www.targetvalidation.org/evidence/genomics_evidence':'genomics evidence',
+        'http://targetvalidation.org/sequence/nearest_gene_five_prime_end':'Nearest gene counting from 5&apos; end',
+        'http://targetvalidation.org/sequence/regulatory_nearest_gene_five_prime_end':'Nearest regulatory gene from 5&apos; end',
+        'http://www.targetvalidation.org/evidence/literature_mining':'Literature mining',
+        'http://www.targetvalidation.org/provenance/DatabaseProvenance':'database provenance',
+        'http://www.targetvalidation.org/provenance/ExpertProvenance':'expert provenance',
+        'http://www.targetvalidation.org/provenance/GWAS_SNP_to_trait_association':'GWAS SNP to trait association',
+        'http://www.targetvalidation.org/provenance/LiteratureProvenance':'literature provenance',
+        'http://www.targetvalidation.org/provenance/disease_to_phenotype_association':'disease to phenotype association',
+        'http://www.targetvalidation.org/provenance/gene_to_disease_association':'gene to disease association',
+        'http://identifiers.org/eco/locus_to_gene_pipeline':'Open Targets Genetics portal locus to gene annotation pipeline',
+        'http://identifiers.org/eco/PheWAS': 'PheWAS catalog evidence'
+    }
+
+    for uri, label in open_targets_terms.items():
+        u = rdflib.URIRef(uri)
+        ocr.rdf_graph.add((u, rdflib.RDF.type, rdflib.term.URIRef(u'http://www.w3.org/2002/07/owl#Class')))
+        ocr.rdf_graph.add([u, rdflib.RDFS.label, rdflib.Literal(label)])
+        ocr.rdf_graph.add([u, rdflib.RDFS.subClassOf, evidence_uri])
+
+```
 
 
 
