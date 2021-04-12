@@ -329,8 +329,28 @@ Then gene is stored in elastic search.
 
 ### **--efo Disease**
 
+```text
+  process = EfoProcess(args.elasticseach_nodes, es_config.efo.name, 
+            es_config.efo.mapping, es_config.efo.setting, 
+            data_config.ontology_efo, data_config.ontology_hpo, 
+            data_config.ontology_mp, data_config.disease_phenotype,
+            args.efo_workers_writer, args.efo_queue_write)
+        if not args.qc_only:
+            process.process_all(args.dry_run)
+```
 
+inputs:
 
+args.elasticseach\_nodes  
+ es\_config.efo.name  
+ es\_config.efo.mapping  
+ es\_config.efo.setting  
+ data\_config.ontology\_efo  
+ data\_config.ontology\_hpo  
+ data\_config.ontology\_mp  
+ data\_config.disease\_phenotype  
+ args.efo\_workers\_writer  
+ args.efo\_queue\_write  
 
 
 
