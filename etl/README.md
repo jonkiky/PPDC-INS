@@ -456,5 +456,19 @@ cttv = rdflib.Namespace(str("http://www.targetvalidation.org/disease"))
 
 ```
 
+add info into  evidence\_ontology.rdf\_graph  and evidence\_ontology.classes\_paths 
+
+generate eco object, store into database.
+
+```text
+ eco = ECO(uri,
+                      label,
+                      self.evidence_ontology.classes_paths[uri]['all'],
+                      self.evidence_ontology.classes_paths[uri]['ids'],
+                      self.evidence_ontology.classes_paths[uri]['labels']
+                      )
+
+```
+
 
 
