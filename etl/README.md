@@ -213,8 +213,17 @@ args.elasticseach\_nodes,
  args.hpa\_queue\_write  
 
 
-  
+process\_all
 
+```text
+ self.hpa_normal_table = self.downloader.retrieve_normal_tissue_data()
+        self.hpa_rna_table = self.downloader.retrieve_rna_data()
+        self.hpa_merged_table = self.process_join()
+        self.store_data(dry_run)
+```
+
+  
+retrieve\_normal\_tissue\_data-&gt; download data from hpa-normal-tissue, then generate CSV file .
 
 
 
