@@ -345,12 +345,18 @@ args.elasticseach\_nodes
  es\_config.efo.name  
  es\_config.efo.mapping  
  es\_config.efo.setting  
- data\_config.ontology\_efo  
- data\_config.ontology\_hpo  
- data\_config.ontology\_mp  
- data\_config.disease\_phenotype  
+ontology-efo: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/efo\_otar\_slim.owl](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/efo_otar_slim.owl)  
+ ontology-hpo: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/hp.owl](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/hp.owl)  
+ ontology-mp: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/ontology-mp-2021-02-08.owl](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/ontology-mp-2021-02-08.owl)  
+ disease-phenotype:- [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/ibd\_2\_pheno\_associations-2021-02-08.owl](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/ontology/ibd_2_pheno_associations-2021-02-08.owl)  
  args.efo\_workers\_writer  
- args.efo\_queue\_write  
+ args.efo\_queue\_write
+
+
+
+
+
+  
 
 
 
