@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
 * [OpenTargets Overview](opentargets-overview.md)
+* [CCDI-Open Target](ccdi-open-target.md)
 * [Bento Overview](bento-overview.md)
 * [Install OpenTargets to MacOS](opentargets-installation.md)
 * [Install Open Targets  to GCP](open-target-in-google-cloud.md)
