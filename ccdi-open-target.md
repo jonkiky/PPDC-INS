@@ -26,25 +26,27 @@ open targets genetics: [https://ppdc-otp-dev.bento-tools.org](https://ppdc-otp-d
 
 
 
-**Three instances :**
+## **AWS Instances** 
 
-**OTG:**  
+### **Open targets genetics:**  
 
-      front-end 172.18.10.31:3006
+      front-end 172.18.10.31
 
-**OTP :** 
+       database & backend : TBD
 
-      Front-end : 172.18.10.184:3000
+### **Open targets platform :** 
 
-     database & Backend: @172.18.10.41:9000
+      front-end : 172.18.10.184
 
-**Connects to instance:**
+     database & Backend: 172.18.10.41
 
-     Step1 : login bastion host. 
+### **Connects to the instances :**
+
+     **Step1** : login bastion host. 
 
 ssh -i  /Users/cheny39/Documents/EC2-Instance/bento-key.pem bento@3.219.1.112
 
-      Step2:   
+      **Step2**:   
 connects from  bastion host
 
 ssh -i .ssh/devops centos@172.18.10.184
@@ -52,4 +54,6 @@ ssh -i .ssh/devops centos@172.18.10.184
 ssh -i .ssh/devops centos@172.18.10.31
 
 ssh -i .ssh/devops centos@172.18.10.41
+
+
 
