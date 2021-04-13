@@ -568,5 +568,69 @@ datasources_to_datatypes:
 
 **process\_all:**
 
-\*\*\*\*
+pipeline stage for making the lists of the target/disease pairs and evidence
+
+```text
+pipeline_stage1 = pr.flat_map(produce_evidence, targets, 
+            workers=self.workers_production,
+            maxsize=self.queue_produce,
+            on_start=produce_evidence_local_init_baked)
+```
+
+inputs:
+
+produce\_evidence, is a function, which returns  \(evidence\['target'\]\['id'\], efo,evidence, is\_direct\), also it calculate the  **association\_score for each evidence.** 
+
+```text
+def produce_evidence(target, es, es_index_val_right,
+        scoring_weights, is_direct_do_not_propagate, datasources_to_datatypes):
+```
+
+```text
+            key = (evidence['target']['id'], efo)
+            ....
+            score = evidence['scores']['association_score']
+            if data_source in scoring_weights:
+                score = score * scoring_weights[data_source]
+                ....
+            row = EvidenceScore(score, data_type, data_source, is_direct)
+            data_cache[key].append(row)
+                   #    class EvidenceScore(object):
+                   #    def __init__(self, score, datatype, datasource, is_direct):
+                   #     self.score = score
+                   #     self.datatype = datatype
+                   #     self.datasource = datasource
+                   #     self.is_direct = is_direct
+           ....
+           return_values.append((key[0],key[1], evidence, is_direct))
+```
+
+**targets**: from elasticsearch.
+
+**produce\_evidence\_local\_init\_baked:**
+
+pipeline stage for scoring the evidence sets includes writing to elasticsearch
+
+```text
+ pipeline_stage2 = pr.map(score_producer, pipeline_stage1, 
+            workers=self.workers_score,
+            maxsize=self.queue_score,
+            on_start=score_producer_local_init_baked)
+```
+
+score\_producer is a function
+
+```text
+
+def score_producer(data, 
+        scorer, lookup_data, datasources_to_datatypes, dry_run):
+```
+
+input:
+
+data = target, disease, evidence, is\_direct 
+
+
+
+
 

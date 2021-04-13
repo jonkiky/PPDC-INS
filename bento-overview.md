@@ -1,9 +1,5 @@
 # Bento Overview
 
-## **Introduction**
-
- **TBD**
-
 ## **Github Repos**
 
 [**https://github.com/CBIIT/bento-tools**](https://github.com/CBIIT/bento-tools)

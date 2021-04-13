@@ -13,5 +13,4 @@
   * [Clickhouse](etl/clickhouse.md)
   * [ElasticSearch](etl/elasticsearch.md)
   * [GraphQL Schema](etl/graphql-schema.md)
-* [Errors](errors.md)
 
