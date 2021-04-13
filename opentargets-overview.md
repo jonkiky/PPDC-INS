@@ -34,18 +34,6 @@ The Open Targets Platform \([https://www](https://www). targetvalidation.org/\) 
 [OT evidence generators](https://github.com/opentargets/evidence_datasource_parsers) .-- OT evidence generators   
 ****
 
-\*\*\*\*
-
-**Forked Repositories**
-
-Platform-api-beta : [https://github.com/CBIIT/ppdc-otp-backend](https://github.com/CBIIT/ppdc-otp-backend)
-
-platform-app:  [https://github.com/CBIIT/ppdc-otp-frontend](https://github.com/CBIIT/ppdc-otp-frontend)
-
-genetics-app:  [https://github.com/CBIIT/ppdc-otg-frontend](https://github.com/CBIIT/ppdc-otg-frontend)
-
-Created Repositories
-
 
 
 ## Data
@@ -56,12 +44,8 @@ Load the data, please use the following scripts:
 
  ElasticSearch: [https://github.com/opentargets/platform-etl-backend/tree/21.02/elasticsearch](https://github.com/opentargets/platform-etl-backend/tree/21.02/elasticsearch) 
 
- ClickHouse: [https://github.com/opentargets/platform-etl-backend/tree/21.02/clickhouse](https://github.com/opentargets/platform-etl-backend/tree/21.02/clickhouse)
-
-## **Documentation** 
-
-**TBD**  
-
+ ClickHouse: [https://github.com/opentargets/platform-etl-backend/tree/21.02/clickhouse](https://github.com/opentargets/platform-etl-backend/tree/21.02/clickhouse)  
+****
 
 ## **Support**
 
