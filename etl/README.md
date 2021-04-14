@@ -630,7 +630,44 @@ input:
 
 data = target, disease, evidence, is\_direct 
 
+```text
+def score(self,target, disease, evidence_scores, is_direct, datasources_to_datatypes):
 
+....
+# init evidence_count['datasources'] and evidence_count['datatypes']
+ association = Association(target, disease, is_direct, datasources, datatypes)
+ 
+ 
+  # set evidence counts
+        for e in evidence_scores:
+            # make sure datatype is constrained
+            if all([e.datatype in association.evidence_count['datatypes'],
+                    e.datasource in association.evidence_count['datasources']]):
+                association.evidence_count['total']+=1
+                association.evidence_count['datatypes'][e.datatype]+=1
+                association.evidence_count['datasources'][e.datasource]+=1
+
+                # set facet data
+                association.set_available_datatype(e.datatype)
+                association.set_available_datasource(e.datasource)
+
+## compute harmonic sum with quadratic (scale_factor) degradation
+        #limit to first 100 entries and scale with afactor of 2
+        self._harmonic_sum(evidence_scores, association, 100, 2, datasources_to_datatypes)
+
+```
+
+skip associations only with data with score 0
+
+```text
+# get gene data by target
+ gene_data = Gene()
+            gene_data_index = lookup_data.available_genes.get_gene(target)
+            if gene_data_index != None:
+                gene_data.load_json(gene_data_index)
+            score.set_target_data(gene_data)
+
+```
 
 
 
