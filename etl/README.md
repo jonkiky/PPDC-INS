@@ -744,7 +744,7 @@ the score is store in association property of "**dict**\[method\]"
 
 skip associations only with data with score 0
 
-set\_target\_data: get  generic gene info and then 'Add private objects used just for indexing
+associations add target data, hpa data and disease data. 
 
 ```text
 # get gene data by target
@@ -757,19 +757,17 @@ set\_target\_data: get  generic gene info and then 'Add private objects used jus
 ```
 
 ```text
+# create a hpa expression empty jsonserializable class
+            hpa_data = HPAExpression()
+            ....
+                score.set_hpa_data(hpa_data)
+       
+            disease_data = EFO()
+            disease_data.load_json(
+                lookup_data.available_efos.get_efo(disease))
+            ....
+            score.set_disease_data(disease_data)
 
-        '''Add private objects used just for indexing'''
-
-        if pathway_data['pathway_code']:
-            self.private['facets']['reactome']= pathway_data
-        if uniprot_keywords:
-            self.private['facets']['uniprot_keywords'] = uniprot_keywords
-        if GO_terms['biological_process'] or \
-            GO_terms['molecular_function'] or \
-            GO_terms['cellular_component'] :
-            self.private['facets']['go'] = GO_terms
-        if target_class['level1']:
-            self.private['facets']['target_class'] = target_class
 ```
 
 
