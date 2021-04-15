@@ -476,10 +476,54 @@ generate eco object, store into database.
 
 ### **--val Validation** 
 
-?????
-
 fix\_and\_score\_evidence????
 
+```text
+process_evidences_pipeline(data_config.input_file, args.val_first_n,
+            args.elasticseach_nodes, es_config.val_right.name, es_config.val_wrong.name, 
+            es_config.val_right.mapping, es_config.val_wrong.mapping, 
+            es_config.val_right.setting, es_config.val_wrong.setting, 
+            es_config.gen.name, es_config.eco.name, es_config.efo.name,
+            args.dry_run,
+            args.val_append_data,
+            args.val_workers_validator, args.val_queue_validator,
+            args.val_workers_writer, args.val_queue_validator_writer,
+            args.val_cache_target, args.val_cache_target_u2e, args.val_cache_target_contains,
+            args.val_cache_eco, args.val_cache_efo, args.val_cache_efo_contains,
+            data_config.eco_scores, data_config.schema,
+            data_config.excluded_biotypes, data_config.datasources_to_datatypes)
+```
+
+**inputs:**
+
+data\_config.input\_file  
+ args.val\_first\_n  
+ args.elasticseach\_nodes  
+ es\_config.val\_right.name  
+ es\_config.val\_wrong.name  
+ es\_config.val\_right.mapping  
+ es\_config.val\_wrong.mapping  
+ es\_config.val\_right.setting  
+ es\_config.val\_wrong.setting  
+ es\_config.gen.name  
+ es\_config.eco.name  
+ es\_config.efo.name  
+ args.dry\_run  
+ args.val\_append\_data  
+ args.val\_workers\_validator  
+ args.val\_queue\_validator  
+ args.val\_workers\_writer  
+ args.val\_queue\_validator\_writer  
+ args.val\_cache\_target  
+ args.val\_cache\_target\_u2e  
+ args.val\_cache\_target\_contains  
+ args.val\_cache\_eco  
+ args.val\_cache\_efo  
+ args.val\_cache\_efo\_contains  
+eco-scores: [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/eco\_scores-2021-02-09.tsv](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/eco_scores-2021-02-09.tsv)  
+ data\_config.schema: [https://raw.githubusercontent.com/opentargets/json\_schema/1.7.5/opentargets.json](https://raw.githubusercontent.com/opentargets/json_schema/1.7.5/opentargets.json)  
+ data\_config.excluded\_biotypes  
+ data\_config.datasources\_to\_datatypes  
 
 
 
@@ -771,6 +815,25 @@ associations add target data, hpa data and disease data.
 ```
 
 
+
+Store data into elasticsearch:
+
+```text
+ actions = self.elasticsearch_actions(pipeline_stage2, self.es_index)
+ #    """
+    def elasticsearch_actions(self, results, index):
+        for r in results:
+            if r is not None:
+                element_id, score = r
+                action = {}
+                action["_index"] = index
+                action["_id"] = element_id
+                #elasticsearch client uses https://github.com/elastic/elasticsearch-py/blob/master/elasticsearch/serializer.py#L24
+                #to turn objects into JSON bodies. This in turn calls json.dumps() using simplejson if present.
+                action["_source"] = association
+                yield action
+                    
+```
 
 
 
