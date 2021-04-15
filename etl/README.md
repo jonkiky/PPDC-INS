@@ -377,7 +377,9 @@ store data into elasticsearch
 
 
 
-### **--eco Evidence Code** in this step , 
+### **--eco Evidence Code** 
+
+in this step, it does not score the evidence, did it in the validation step. 
 
 ```text
 process = EcoProcess(args.elasticseach_nodes, es_config.eco.name, 
@@ -492,7 +494,7 @@ fix\_and\_score\_evidence????
 
 Their  scoring framework is a four-tier process:
 
-1. score the **individual evidence**
+1. score the **individual evidence  \(validation step\)**
 2. aggregate the evidence scores into **data sources** scores
 3. aggregation of data source scores to give rise to the **data types** scores
 4. overall association score is the result of the aggregation of all data source scores together
@@ -613,6 +615,8 @@ def produce_evidence(target, es, es_index_val_right,
 
 **get\_evidence\_for\_target\_simple**:  get evidence from elasticsearch.  
 
+This update the score of given evidence??? based on the data_source scoring\_weights?_
+
 ```text
             for evidence in get_evidence_for_target_simple(es, target, es_index_val_right):
              #  get_evidence_for_target_simple  
@@ -658,11 +662,17 @@ def score_producer(data,
         scorer, lookup_data, datasources_to_datatypes, dry_run):
 ```
 
-input:
+**inputs**:
 
 data = target, disease, evidence, is\_direct 
 
+it iterates the evidence, counts the evidence, harmonic\_sum  the score
+
 ```text
+from: score = scorer.score(target, disease, evidence, is_direct, 
+            datasources_to_datatypes)
+            
+to: 
 def score(self,target, disease, evidence_scores, is_direct, datasources_to_datatypes):
 
 ....
@@ -689,7 +699,52 @@ def score(self,target, disease, evidence_scores, is_direct, datasources_to_datat
 
 ```
 
+**harmonic\_sum :**
+
+HarmonicSumScorer**:** 
+
+**1.**calculate _datasource_ scorers
+
+2.calculate datatypes\_score
+
+3 calculate overall score
+
+the score is store in association property of "**dict**\[method\]"
+
+```text
+ def _harmonic_sum(self, evidence_scores, association, 
+            max_entries, scale_factor, datasources_to_datatypes):
+        har_sum_score = association.get_scoring_method(ScoringMethods.HARMONIC_SUM)
+        datasource_scorers = {}
+        for e in evidence_scores:
+            if e.datasource not in datasource_scorers:
+                datasource_scorers[e.datasource]= HarmonicSumScorer(buffer=max_entries)
+            datasource_scorers[e.datasource].add(e.score)
+        '''compute datasource scores'''
+        overall_scorer = HarmonicSumScorer(buffer=max_entries)
+        for datasource in datasource_scorers:
+            '''cap datasource scores at this level so very big scores 
+            do not take over smaller score around the range of 1'''
+            har_sum_score.datasources[datasource]=datasource_scorers[datasource].score(scale_factor=scale_factor, cap=1)
+            overall_scorer.add(har_sum_score.datasources[datasource])
+        '''compute datatype scores'''
+        datatypes_scorers = dict()
+        for ds in har_sum_score.datasources:
+            dt = datasources_to_datatypes[ds]
+            if dt not in datatypes_scorers:
+                datatypes_scorers[dt]= HarmonicSumScorer(buffer=max_entries)
+            datatypes_scorers[dt].add(har_sum_score.datasources[ds])
+        for datatype in datatypes_scorers:
+            har_sum_score.datatypes[datatype]=datatypes_scorers[datatype].score(scale_factor=scale_factor)
+        '''compute overall scores'''
+        har_sum_score.overall = overall_scorer.score(scale_factor=scale_factor)
+
+        return association
+```
+
 skip associations only with data with score 0
+
+set\_target\_data: get  generic gene info and then 'Add private objects used just for indexing
 
 ```text
 # get gene data by target
@@ -700,6 +755,26 @@ skip associations only with data with score 0
             score.set_target_data(gene_data)
 
 ```
+
+```text
+
+        '''Add private objects used just for indexing'''
+
+        if pathway_data['pathway_code']:
+            self.private['facets']['reactome']= pathway_data
+        if uniprot_keywords:
+            self.private['facets']['uniprot_keywords'] = uniprot_keywords
+        if GO_terms['biological_process'] or \
+            GO_terms['molecular_function'] or \
+            GO_terms['cellular_component'] :
+            self.private['facets']['go'] = GO_terms
+        if target_class['level1']:
+            self.private['facets']['target_class'] = target_class
+```
+
+
+
+
 
 
 
