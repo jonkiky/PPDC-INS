@@ -377,7 +377,7 @@ store data into elasticsearch
 
 
 
-### **--eco Evidence Code** 
+### **--eco Evidence Code** in this step , 
 
 ```text
 process = EcoProcess(args.elasticseach_nodes, es_config.eco.name, 
@@ -474,9 +474,34 @@ generate eco object, store into database.
 
 ### **--val Validation** 
 
-TO BE DONE
+?????
+
+fix\_and\_score\_evidence????
+
+
+
+
 
 ###  **--as Associations**
+
+**The main part of associations is association scores.** 
+
+**the detail about the** scoring **algorithm  can be found at**  [**https://docs.targetvalidation.org/getting-started/scoring**](https://docs.targetvalidation.org/getting-started/scoring) ****
+
+**Summary of the algorithm:**
+
+Their  scoring framework is a four-tier process:
+
+1. score the **individual evidence**
+2. aggregate the evidence scores into **data sources** scores
+3. aggregation of data source scores to give rise to the **data types** scores
+4. overall association score is the result of the aggregation of all data source scores together
+
+![](../.gitbook/assets/screen-shot-2021-04-15-at-2.11.24-pm.png)
+
+
+
+**Codebase**
 
 ```text
 if args.assoc:
@@ -577,16 +602,23 @@ pipeline_stage1 = pr.flat_map(produce_evidence, targets,
             on_start=produce_evidence_local_init_baked)
 ```
 
-inputs:
+**inputs**:
 
-produce\_evidence, is a function, which returns  \(evidence\['target'\]\['id'\], efo,evidence, is\_direct\), also it calculate the  **association\_score for each evidence.** 
+**produce\_evidence**, is a function, which returns  \(evidence\['target'\]\['id'\], efo,evidence, is\_direct\), also it calculate the  **association\_score for each evidence.** 
 
 ```text
 def produce_evidence(target, es, es_index_val_right,
         scoring_weights, is_direct_do_not_propagate, datasources_to_datatypes):
 ```
 
+**get\_evidence\_for\_target\_simple**:  get evidence from elasticsearch.  
+
 ```text
+            for evidence in get_evidence_for_target_simple(es, target, es_index_val_right):
+             #  get_evidence_for_target_simple  
+             #fields = ['target.id', 'private.efo_codes', 'disease.id','scores.association_score','sourceID','id']
+  
+            ....
             key = (evidence['target']['id'], efo)
             ....
             score = evidence['scores']['association_score']
@@ -630,7 +662,44 @@ input:
 
 data = target, disease, evidence, is\_direct 
 
+```text
+def score(self,target, disease, evidence_scores, is_direct, datasources_to_datatypes):
 
+....
+# init evidence_count['datasources'] and evidence_count['datatypes']
+ association = Association(target, disease, is_direct, datasources, datatypes)
+ 
+ 
+  # set evidence counts
+        for e in evidence_scores:
+            # make sure datatype is constrained
+            if all([e.datatype in association.evidence_count['datatypes'],
+                    e.datasource in association.evidence_count['datasources']]):
+                association.evidence_count['total']+=1
+                association.evidence_count['datatypes'][e.datatype]+=1
+                association.evidence_count['datasources'][e.datasource]+=1
+
+                # set facet data
+                association.set_available_datatype(e.datatype)
+                association.set_available_datasource(e.datasource)
+
+## compute harmonic sum with quadratic (scale_factor) degradation
+        #limit to first 100 entries and scale with afactor of 2
+        self._harmonic_sum(evidence_scores, association, 100, 2, datasources_to_datatypes)
+
+```
+
+skip associations only with data with score 0
+
+```text
+# get gene data by target
+ gene_data = Gene()
+            gene_data_index = lookup_data.available_genes.get_gene(target)
+            if gene_data_index != None:
+                gene_data.load_json(gene_data_index)
+            score.set_target_data(gene_data)
+
+```
 
 
 
