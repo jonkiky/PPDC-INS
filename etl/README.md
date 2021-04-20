@@ -837,5 +837,210 @@ Store data into elasticsearch:
 
 
 
+### **--sea Search**
 
+```text
+  process = SearchObjectProcess(args.elasticseach_nodes, 
+                es_config.sea.name,  
+                es_config.sea.mapping, es_config.sea.setting, 
+                es_config.gen.name, es_config.efo.name, es_config.val_right.name,
+                es_config.asc.name, 
+                args.sea_workers_writer, 
+                args.sea_queue_write, 
+                data_config.chembl_target, 
+                data_config.chembl_mechanism, 
+                data_config.chembl_component, 
+                data_config.chembl_protein, 
+                data_config.chembl_molecule)
+        if not args.qc_only:
+            process.process_all(args.dry_run)
+```
+
+**inputs:**
+
+args.elasticseach\_nodes   
+ es\_config.sea.name   
+ es\_config.sea.mapping es\_config.sea.setting   
+ es\_config.gen.name es\_config.efo.name es\_config.val\_right.name  
+ es\_config.asc.name   
+ args.sea\_workers\_writer   
+ args.sea\_queue\_write   
+ data\_config.chembl\_target   
+ data\_config.chembl\_mechanism   
+ data\_config.chembl\_component   
+ data\_config.chembl\_protein   
+ data\_config.chembl\_molecule  
+
+
+
+
+chembl-target:
+
+* [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/chembl\_target\_rest\_api-2020-06-01.json.gz](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/chembl_target_rest_api-2020-06-01.json.gz)
+
+  chembl-mechanism:
+
+* [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/chembl\_mechanism\_rest\_api-2020-06-01.json.gz](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/chembl_mechanism_rest_api-2020-06-01.json.gz)
+
+  chembl-component:
+
+* [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/chembl\_target\_component\_rest\_api-2020-06-01.json.gz](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/chembl_target_component_rest_api-2020-06-01.json.gz)
+
+  chembl-protein:
+
+* [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/chembl\_protein\_class\_rest\_api-2020-06-01.json.gz](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/chembl_protein_class_rest_api-2020-06-01.json.gz)
+
+  chembl-molecule:
+
+* [https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/chembl\_molecule\_rest\_api-2020-06-01.json.gz](https://storage.googleapis.com/open-targets-data-releases/21.02/input/annotation-files/chembl_molecule_rest_api-2020-06-01.json.gz)
+
+```text
+ es = new_es_client(self.es_hosts)
+        #setup chembl handler
+        self.chembl_handler = ChEMBLLookup(self.chembl_target_uri, 
+            self.chembl_mechanism_uri, 
+            self.chembl_component_uri, 
+            self.chembl_protein_uri, 
+            self.chembl_molecule_set_uri_pattern)
+        self.chembl_handler.get_molecules_from_evidence(es, self.es_index_val_right)
+        all_molecules = set()
+        for target, molecules in  list(self.chembl_handler.target2molecule.items()):
+            all_molecules = all_molecules|molecules
+        all_molecules = sorted(all_molecules)
+        query_batch_size = 100
+        for i in range(0, len(all_molecules) + 1, query_batch_size):
+            self.chembl_handler.populate_synonyms_for_molecule(all_molecules[i:i + query_batch_size],
+                self.chembl_handler.molecule2synonyms)
+
+        with URLZSource(self.es_mappings).open() as mappings_file:
+            mappings = json.load(mappings_file)
+
+        with URLZSource(self.es_settings).open() as settings_file:
+            settings = json.load(settings_file)
+
+        with ElasticsearchBulkIndexManager(es, self.es_index, settings, mappings):
+            #process targets
+            self.logger.info('handling targets')
+            targets = self.get_targets(es)
+            so_it = self.handle_search_object(targets, es, SearchObjectTypes.TARGET)
+            store_in_elasticsearch(so_it, dry_run, es, self.es_index, 
+                self.workers_write, self.queue_write)
+
+            #process diseases
+            self.logger.info('handling diseases')
+            diseases = self.get_diseases(es)
+            so_it = self.handle_search_object(diseases, es, SearchObjectTypes.DISEASE)
+            store_in_elasticsearch(so_it, dry_run, es, self.es_index, 
+                self.workers_write, self.queue_write)
+```
+
+get\_molecules\_from\_evidence:   find the "known\_drug" from DB and then full fill the target2molecule obj.
+
+```text
+
+    def get_molecules_from_evidence(self, es, index):
+
+        fields = ['target.id','disease.id', 'evidence.target2drug.urls']
+        for e in Search().using(es).index(index).query(
+            Match(type="known_drug")).source(includes=fields).scan():
+            e = e.to_dict()
+            #get information from URLs that we need to extract short ids
+            #e.g. https://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL502835
+            molecule_ids = [self.str_hook(i['url'].split('/')[-1]) for i in e['evidence']['target2drug']['urls'] if
+                           '/compound/' in i['url']]
+            if molecule_ids:
+                molecule_id=molecule_ids[0]
+
+                disease_id = self.str_hook(e['disease']['id'])
+                target_id = self.str_hook(e['target']['id'])
+                if disease_id not in self.disease2molecule:
+                    self.disease2molecule[disease_id]=set()
+                self.disease2molecule[disease_id].add(molecule_id)
+                if target_id not in self.target2molecule:
+                    self.target2molecule[target_id]=set()
+                self.target2molecule[target_id].add(molecule_id)
+```
+
+populate\_synonyms\_for\_molecule:
+
+```text
+  def populate_synonyms_for_molecule(self, molecule_set, molecules_syn_dict):
+        def _append_to_mol2syn(m2s_dict, molecule):
+            """if molecule has synonyms create a clean entry in m2s_dict with all synms for that chembl_id.
+            Returns either None if goes ok or the molecule chembl id if something wrong"""
+            if 'molecule_synonyms' in molecule and molecule['molecule_synonyms']:
+                synonyms = []
+                for syn in molecule['molecule_synonyms']:
+                    synonyms.append(syn['synonyms'])
+                    synonyms.append(syn['molecule_synonym'])
+                synonyms = list(set(synonyms))
+                m2s_dict[molecule['molecule_chembl_id']] = synonyms
+                return None
+            else:
+                return molecule['molecule_chembl_id']
+
+        if not molecule_set or not len(molecule_set):
+            self._logger.warn("No molecules in set")
+            return
+
+        data = {'molecules':[]}
+        for mol_k in molecule_set:
+            if mol_k in self.molecules_dict:
+                data['molecules'].append(self.molecules_dict[mol_k])
+            else:
+                raise ValueError('problem retrieving the molecule info from the local db', str(mol_k))
+
+        #if the data is what we expected, process it
+        if 'molecules' in data:
+            map_f = functools.partial(_append_to_mol2syn, molecules_syn_dict)
+            mols_without_syn = \
+                list(itertools.filterfalse(lambda mol: mol is None, map(map_f, data['molecules'])))
+            if mols_without_syn:
+                self._logger.debug('molecule list with no synonyms %s', str(mols_without_syn))
+
+        else:
+            self._logger.error("there is no 'molecules' key in the structure")
+            raise RuntimeError("unexpected chembl API response")
+```
+
+handle\_search\_object： find drugs\_synonyms through TARGET and DISEASE
+
+```text
+def handle_search_object(self, data_it, es, search_type):
+        for data in data_it:
+            data["search_type"] = search_type
+            '''process objects to simple search object'''
+            so = self.data_handlers[data["search_type"]]()
+            so.digest(json_input=data)
+
+            '''inject drug data'''
+            if not hasattr(so, 'drugs'):
+                so.drugs = {}
+            so.drugs['evidence_data'] = []
+
+            '''count associations '''
+            if data["search_type"] == SearchObjectTypes.TARGET:
+                ass_data,ass_count = self.get_associations(data['id'], None, es)
+                so.set_associations(ass_data,ass_count)
+                if so.id in self.chembl_handler.target2molecule:
+                    drugs_synonyms = set()
+                    for molecule in self.chembl_handler.target2molecule[so.id]:
+                        if molecule in self.chembl_handler.molecule2synonyms:
+                            drugs_synonyms = drugs_synonyms | set(self.chembl_handler.molecule2synonyms[molecule])
+                    so.drugs['evidence_data'] = list(drugs_synonyms)
+
+            elif data["search_type"] == SearchObjectTypes.DISEASE:
+                ass_data,ass_count = self.get_associations(None, data['path_codes'][0][-1], es)
+                so.set_associations(ass_data,ass_count)
+                if so.id in self.chembl_handler.disease2molecule:
+                    drugs_synonyms = set()
+                    for molecule in self.chembl_handler.disease2molecule[so.id]:
+                        if molecule in self.chembl_handler.molecule2synonyms:
+                            drugs_synonyms = drugs_synonyms | set(self.chembl_handler.molecule2synonyms[molecule])
+                    so.drugs['evidence_data'] = list(drugs_synonyms)
+            else:
+                so.set_associations({"total":[],"direct":[]},{"total":0,"direct":0})
+
+            yield so
+```
 
