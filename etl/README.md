@@ -1044,3 +1044,149 @@ def handle_search_object(self, data_it, es, search_type):
             yield so
 ```
 
+### **--ddr Relationships**
+
+```text
+process = DataDrivenRelationProcess(args.elasticseach_nodes, 
+                es_config.ddr.name, 
+                es_config.ddr.mapping, es_config.ddr.setting,
+                es_config.efo.name, es_config.gen.name, es_config.asc.name, 
+                args.ddr_workers_production,
+                args.ddr_workers_score,
+                args.ddr_workers_write,
+                args.ddr_queue_production_score,
+                args.ddr_queue_score_result,
+                args.ddr_queue_write,
+                data_config.ddr["score-threshold"],
+                data_config.ddr["evidence-count"])
+        if not args.qc_only:
+            process.process_all(args.dry_run)
+```
+
+```text
+ddr:
+  evidence-count: 3
+  score-threshold: 0.1
+```
+
+
+
+get target and disease then store in db with relationship.         
+
+```text
+ def process_all(self, dry_run):
+
+        es = new_es_client(self.es_hosts)
+
+        target_data, disease_data = get_disease_to_targets_vectors(
+                self.score_threshold, self.evidence_count, es, self.es_index_assoc)
+
+        if len(target_data) == 0 or len(disease_data) == 0:
+            raise Exception('Could not find a set of targets AND diseases that had the sufficient number'
+                            ' of evidences or acceptable harmonic sum score')
+
+        '''sort the lists and keep using always the same order in all the steps'''
+        disease_keys = sorted(disease_data.keys())
+        target_keys = sorted(target_data.keys())
+
+        self.logger.info('getting disese labels')
+        disease_id_to_label = get_disease_labels(disease_keys, es, self.es_index_efo)
+        disease_labels = [disease_id_to_label[hit_id] for hit_id in disease_keys]
+        self.logger.info('getting target labels')
+        target_id_to_label = get_target_labels(target_keys, es, self.es_index_gen)
+        target_labels = [target_id_to_label[hit_id] for hit_id in target_keys]
+
+
+        with URLZSource(self.es_mappings).open() as mappings_file:
+            mappings = json.load(mappings_file)
+
+        with URLZSource(self.es_settings).open() as settings_file:
+            settings = json.load(settings_file)
+
+        with ElasticsearchBulkIndexManager(es, self.es_index, settings, mappings):
+
+            #calculate and store disease-to-disease in multiple processess
+            self.logger.info('handling disease-to-disease')
+            handle_pairs(RelationType.SHARED_TARGET, disease_labels, disease_data, disease_keys, 
+                target_keys, 0.19, 1024, es, dry_run, 
+                self.ddr_workers_production, self.ddr_workers_score, self.ddr_workers_write,
+                self.ddr_queue_production_score, self.ddr_queue_score_result, self.ddr_queue_write, 
+                self.es_index)
+            self.logger.info('handled disease-to-disease')
+
+            #calculate and store target-to-target in multiple processess
+            self.logger.info('handling target-to-target')
+            handle_pairs(RelationType.SHARED_DISEASE, target_labels, target_data, target_keys, 
+                disease_keys, 0.19, 1024, es, dry_run, 
+                self.ddr_workers_production, self.ddr_workers_score, self.ddr_workers_write,
+                self.ddr_queue_production_score, self.ddr_queue_score_result, self.ddr_queue_write, 
+                self.es_index)
+            self.logger.info('handled target-to-target')x
+```
+
+
+
+```text
+"""
+handles producing pairs for a particular set of inputs
+spawns multiple processess as needed
+used to standardize d2d and t2t code path
+"""
+def handle_pairs(type, subject_labels, subject_data, subject_ids, other_ids, 
+        threshold, buckets_number, es, dry_run, 
+        workers_production, workers_score, workers_write,
+        queue_production_score, queue_score_result, queue_write, index):
+
+    #do some initial setup
+    vectorizer = DictVectorizer(sparse=True)
+    tdidf_transformer = LocalTfidfTransformer(smooth_idf=False, )
+    data_vector = vectorizer.fit_transform([subject_data[i] for i in subject_ids])
+    data_vector = data_vector > 0
+    data_vector = data_vector.astype(int)
+    transformed_data = tdidf_transformer.fit_transform(data_vector)
+    sums_vector = np.squeeze(np.asarray(transformed_data.sum(1)).ravel())#sum by row
+    '''put vectors in buckets'''
+    buckets = {}
+    for i in range(buckets_number):
+        buckets[i]=[]
+    vector_hashes = {}
+    for i in range(len(subject_ids)):
+        vector = transformed_data[i].toarray()[0]
+        digested = digest_in_buckets(vector, buckets_number)
+        for bucket in digested:
+            buckets[bucket].append(i)
+        vector_hashes[i]=digested
+
+    idf = dict(list(zip(vectorizer.feature_names_, list(tdidf_transformer.idf_))))
+    idf_ = 1-tdidf_transformer.idf_
+
+    #now everything is computed that can be baked into the function arguments
+
+    produce_pairs_local_init_baked = functools.partial(produce_pairs_local_init, 
+        vector_hashes, buckets, threshold, sums_vector, data_vector)
+
+    calculate_pairs_local_init_baked = functools.partial(calculate_pairs_local_init, 
+        type, subject_labels, subject_ids, other_ids, threshold, idf, idf_)
+
+    #create stage for producing disease-to-disease
+    pipeline_stage = pr.flat_map(produce_pairs, list(range(len(subject_ids))), 
+        workers=workers_production,
+        maxsize=queue_production_score,
+        on_start=produce_pairs_local_init_baked)
+
+    #create stage to calculate disease-to-disease
+    pipeline_stage = pr.map(calculate_pair, pipeline_stage, 
+        workers=workers_score,
+        maxsize=queue_score_result,
+        on_start=calculate_pairs_local_init_baked)
+
+    #store in elasticsearch
+    #this could be multi process, but just use a single for now
+    store_in_elasticsearch(pipeline_stage, es, dry_run, workers_write, queue_write,
+        index)
+```
+
+
+
+
+
