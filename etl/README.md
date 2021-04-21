@@ -1188,5 +1188,45 @@ def handle_pairs(type, subject_labels, subject_data, subject_ids, other_ids,
 
 
 
+## [**platform-etl-backend**](https://github.com/opentargets/platform-etl-backend) ****
+
+ETL pipelines to generate associations, evidence, and entity indices 
+
+### Steps
+
+```text
+case "evidence" =><br/>
+        Evidence()<br/>
+      case "search" =><br/>
+        Search()<br/>
+      case "drug" =><br/>
+        Drug()<br/>
+      case "knownDrugs" =><br/>
+        KnownDrugs()<br/>
+      case "expression" =><br/>
+        Expression()<br/>
+      case "disease" =><br/>
+        Disease()<br/>
+      case "target" =><br/>
+        Target()<br/>
+      case "mousePhenotypes" =><br/>
+        MousePhenotypes()<br/>
+      case "reactome" =><br/>
+        Reactome()<br/>
+      case "eco" =><br/>
+        Eco()<br/>
+      case "interactions" =><br/>
+        Interactions()<br/>
+      case "cancerBiomarkers" =><br/>
+        CancerBiomarkers()<br/>
+      case "association" =><br/>
+        Association()<br/>
+      case "connections" =><br/>
+        Connections()<br/>
+      case "associationOTF" =><br/>
+        AssociationOTF()<br/>
+
+```
+
 
 
