@@ -76,8 +76,6 @@ this is only part of the data, the data from FAERS  treat separately.
 
 ### EFO step \(disease\)
 
-The EFO step is used to gather the raw data for the [platform ETL](https://github.com/opentargets/platform-etl-backend).
-
 The scope of EFO is to support the annotation, analysis and visualization of data handled by the core ontology for Open Targets.
 
 This step downloads and manipulates the input files and it generates the following output:
@@ -88,8 +86,6 @@ This step downloads and manipulates the input files and it generates the followi
 * hpo-phenotypes-_yyyy-mm-dd_.jsonl : mapping between CrossReference databaseId
 
 ### Drug step
-
-The Drug step is used to gather the raw data for the [platform ETL](https://github.com/opentargets/platform-etl-backend).
 
 ChEMBL have made an Elasticsearch instance available for querying. To keep data volumes and running times down specify the index and fields which are required in the config file.
 
