@@ -1188,6 +1188,15 @@ def handle_pairs(type, subject_labels, subject_data, subject_ids, other_ids,
 
 ETL pipelines to generate associations, evidence, and entity indices 
 
+it require dump from DB
+
+1. Drug index dump from OpenTargets ES
+2. Target index dump from OpenTargets ES
+3. Disease index dump from OpenTargets ES
+4. Evidence index dump from OpenTargets ES
+5. Expression index dump from OpenTargets ES
+6. Generate MousePhenotypes dump from OperTargets ES
+
 ### Steps
 
 ```text
