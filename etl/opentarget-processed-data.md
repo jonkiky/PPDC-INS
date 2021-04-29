@@ -52,8 +52,6 @@ targets/
 
 {% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/aotf/elasticsearch/" %}
 
-
-
 ```text
 {
    "row_id":"000389a2cabf4a82e3c8176d7a100c8bdf8b280f",
@@ -80,13 +78,11 @@ targets/
 
 
 
-## associations  
+## associations - direct - by overall
 
 no\_load script 
 
 {% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/associations/direct/byOverall/" %}
-
-
 
 ```text
 {
@@ -117,6 +113,42 @@ no\_load script
    "overallDatatypeEvidenceCount":1.0
 }
 ```
+
+## associations-direct-byDatasource
+
+{% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/associations/direct/byDatasource/" %}
+
+```text
+{
+   "targetId":"ENSG00000051382",
+   "diseaseId":"EFO_0000094",
+   "datasourceId":"cancer_gene_census",
+   "datasourceHarmonicScore":0.3039653988058105,
+   "datasourceEvidenceCount":1,
+   "diseaseLabel":"B-cell acute lymphoblastic leukemia",
+   "targetName":"phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit beta",
+   "targetSymbol":"PIK3CB"
+}
+```
+
+## association direct by dataType
+
+{% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/associations/direct/byDatatype/" %}
+
+```text
+{
+   "targetId":"ENSG00000000938",
+   "diseaseId":"EFO_0000095",
+   "datatypeId":"known_drug",
+   "datatypeHarmonicScore":0.17845250260095416,
+   "datatypeEvidenceCount":7,
+   "diseaseLabel":"chronic lymphocytic leukemia",
+   "targetName":"FGR proto-oncogene, Src family tyrosine kinase",
+   "targetSymbol":"FGR"
+}
+```
+
+##  
 
 ## cancerBiomarkers
 
@@ -241,6 +273,30 @@ load\_cancerbiomarker.sh
 }
 ```
 
+## HPO
+
+[http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/hpo/part-00000-3a42073f-1f0c-4869-94c6-0083bce66384-c000.json](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/hpo/part-00000-3a42073f-1f0c-4869-94c6-0083bce66384-c000.json)
+
+```text
+{
+   "dbXRefs":[
+      "Wikipedia:Electron",
+      "KEGG:C05359",
+      "PMID:21614077"
+   ],
+   "description":"Elementary particle not affected by the strong force having a spin 1/2, a negative elementary charge and a rest mass of 0.000548579903(13) u, or 0.51099906(15) MeV.",
+   "id":"CHEBI_10545",
+   "name":"electron",
+   "namespace":[
+      "chebi_ontology"
+   ],
+   "parents":[
+      "CHEBI_36338"
+   ]
+}
+
+```
+
 ## drug
 
 {% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/drugs/drug/" %}
@@ -273,7 +329,69 @@ load\_cancerbiomarker.sh
 }
 ```
 
+## drug -indication
 
+{% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/drugs/indication/part-00000-27cb8e06-00a1-4b70-9035-ae027c943c16-c000.json" %}
+
+```text
+{
+   "id":"CHEMBL1090090",
+   "indications":[
+      {
+         "disease":"EFO_0000685",
+         "efoName":"rheumatoid arthritis",
+         "maxPhaseForIndication":2,
+         "references":[
+            {
+               "source":"ClinicalTrials",
+               "ids":[
+                  "NCT00205478",
+                  "NCT00395577"
+               ]
+            }
+         ]
+      }
+   ],
+   "count":1
+}
+```
+
+## drug mechanism\_of\_action
+
+{% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/drugs/mechanism\_of\_action/part-00000-3ecb470f-8495-45ae-8caf-9d2cc023ae82-c000.json" %}
+
+```text
+{
+   "mechanismOfAction":"Reducing agent",
+   "chemblIds":[
+      "CHEMBL1314"
+   ],
+   "r":[
+      [
+         {
+            "source":"DailyMed",
+            "ids":[
+               "setid=494a714e-923c-cd57-df6c-12886afb265a#nlm34090-1"
+            ],
+            "urls":[
+               "http://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=494a714e-923c-cd57-df6c-12886afb265a#nlm34090-1"
+            ]
+         }
+      ]
+   ],
+   "references":[
+      {
+         "source":"DailyMed",
+         "ids":[
+            "setid=494a714e-923c-cd57-df6c-12886afb265a#nlm34090-1"
+         ],
+         "urls":[
+            "http://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=494a714e-923c-cd57-df6c-12886afb265a#nlm34090-1"
+         ]
+      }
+   ]
+}
+```
 
 ## eco
 
@@ -444,6 +562,19 @@ load\_cancerbiomarker.sh
 ```
 
 
+
+## evidence **fails**
+
+```text
+{
+   "resolvedTarget":false,
+   "resolvedDisease":false,
+   "excludedBiotype":false,
+   "id":"da39a3ee5e6b4b0d3255bfef95601890afd80709",
+   "nullifiedScore":true,
+   "markedDuplicate":false
+}
+```
 
 ## evidence stats
 
@@ -1153,8 +1284,6 @@ HPO
 
 {% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/interactions/" %}
 
-
-
 ```text
 {
    "sourceDatabase":"intact",
@@ -1221,8 +1350,6 @@ HPO
 
 {% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/knownDrugs/" %}
 
-
-
 ```text
 {
    "drugId":"CHEMBL1096882",
@@ -1246,32 +1373,6 @@ HPO
       "MONDO_0005374",
       "EFO_0000565",
       "EFO_0004289",
-      "EFO_0000220",
-      "EFO_0009119",
-      "EFO_1000068",
-      "MONDO_0044881",
-      "EFO_0001642",
-      "EFO_0000574",
-      "MONDO_0004095",
-      "EFO_1001938",
-      "EFO_0005952",
-      "EFO_0002425",
-      "Orphanet_322126",
-      "MONDO_0015757",
-      "MONDO_0003225",
-      "MONDO_0004805",
-      "EFO_0007352",
-      "OTAR_0000006",
-      "EFO_0009676",
-      "EFO_0002461",
-      "EFO_0000540",
-      "MONDO_0044986",
-      "OTAR_0000018",
-      "EFO_0000508",
-      "Orphanet_68336",
-      "MONDO_0045024",
-      "MONDO_0023370",
-      "EFO_0000616",
       "EFO_0000311"
    ],
    "label":"B-cell acute lymphoblastic leukemia",
@@ -1590,6 +1691,8 @@ HPO
 }
 ```
 
+## 
+
 ## otar\_projects
 
 [http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/otar\_projects/](http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/otar_projects/)
@@ -1626,7 +1729,7 @@ HPO
 }
 ```
 
-## reactome
+## **Reactome**
 
 {% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/reactome/" %}
 
@@ -1654,6 +1757,113 @@ HPO
          "R-HSA-382556"
       ]
    ]
+}
+```
+
+## **Search/targetIndex**
+
+```text
+{
+   "id":"ENSG00000004948",
+   "name":"CALCR",
+   "description":"calcitonin receptor",
+   "entity":"target",
+   "category":[
+      "protein_coding"
+   ],
+   "keywords":[
+      "CTR",
+      "Calcitonin receptor",
+      "CT-R",
+      "P30988",
+   ],
+   "prefixes":[
+      "Calcitonin receptor",
+      "CT-R",
+      "CTR",
+      "calcitonin receptor",
+      "CALCR"
+   ],
+   "ngrams":[
+      "P30988",
+      "Q6T712",
+      "F5H605",
+    
+   ],
+   "terms":[
+      "musculoskeletal or connective tissue disease",
+    
+      "Calcitonin",
+      "Calcitare",
+      "Calsynar",
+      "Cibacalcin",
+      "Forcaltonin",
+      "Miacalcic",
+      "CALCITONIN",
+      "Calcitonin (human synthetic)",
+      "Calcitonin Human",
+      "Calcitonin human",
+      "CALCITONIN HUMAN"
+   ],
+   "terms25":[
+      "musculoskeletal or connective tissue disease",
+      "musculoskeletal system disease",
+    
+      "Calcitonin receptor agonist",
+      "Calcitonin (salmon synthetic)",
+      "Calcitonin Salmon Recombinant",
+      "Fortical",
+      "CALCITONIN SALMON RECOMBINANT",
+      "SMC-021",
+      "SMC021"
+   ],
+   "terms5":[
+      "musculoskeletal or connective tissue disease",
+      "musculoskeletal system disease",
+      "musculoskeletal system disorder",
+      "disorder of musculoskeletal system",
+      "musculoskeletal system disease or disorder",
+      "disease or disorder of musculoskeletal system",
+      "musculoskeletal disease",
+      "disease of musculoskeletal system",
+      "musculoskeletal disorder",
+      "bone disease",
+      "bone element disease",
+      "disease of bone element",
+      "disorder of bone element",
+      "bone element disease or disorder",
+      "disease or disorder of bone element",
+      "skeletal disease",
+      "rare bone disease related to a common gene or pathway defect",
+      "metabolic disease",
+      "Thesaurismoses",
+      "DIS METAB",
+      "disorder of metabolic process",
+      "Disease Metabolic",
+      "disease of metabolism",
+      "metabolic disorder",
+      "Metabolic disease NOS",
+      "Diseases Metabolic",
+      "METAB DIS",
+      "Metabolic disorder NOS",
+      "metabolic process disease",
+      "Generalized metabolic disorder",
+      "METABOLISM DISORDER NOS",
+      "Disorder of metabolism NOS",
+      "Metabolic disorders",
+      "Generalized metabolic disorder (disorder)",
+      "Disorder of metabolism NOS (disorder)",
+      "metabolism disorder",
+      "MD - Metabolic disorders",
+      "Metabolic disease (disorder)",
+      "Metabolic Disorder",
+      "Metabolic Diseases",
+      "Thesaurismosis",
+      "Generalised metabolic disorder",
+      "Unspecified disorder of metabolism",
+      "nutritional or metabolic disease"
+   ],
+   "multiplier":1.4489019186939136
 }
 ```
 
@@ -1727,870 +1937,13 @@ HPO
       "STD",
       "ST2",
       "Bile salt sulfotransferase",
-      "Dehydroepiandrosterone sulfotransferase",
-      "SULT2A3",
-      "2.8.2.14",
-      "Hydroxysteroid Sulfotransferase",
-      "Sulfotransferase 2A1",
-      "2.8.2.2",
-      "DHEA-ST8",
-      "ST2A1",
-      "sulfotransferase family 2A member 1",
-      "SULT2A1",
-      "IB1099",
-      "ETL1",
-      "EPITEMPIN",
-      "EPT",
-      "Epitempin-1",
-      "Leucine-rich glioma-inactivated protein 1",
-      "leucine rich glioma inactivated 1",
-      "LGI1",
-      "C4BP",
-      "PRP",
-      "C4bp",
-      "Proline-rich protein",
-      "C4b-binding protein alpha chain",
-      "complement component 4 binding protein alpha",
-      "C4BPA",
-      "MDP",
-      "RDP",
-      "Dehydropeptidase-I",
-      "Beta-lactamase",
-      "Renal dipeptidase",
-      "3.4.13.19",
-      "Microsomal dipeptidase",
-      "hRDP",
-      "Dipeptidase 1",
-      "3.5.2.6",
-      "dipeptidase 1",
-      "DPEP1",
-      "A3GALNT",
-      "A3GALT1",
-      "ABO alpha 1-3-N-acetylgalactosaminyltransferase and alpha 1-3-galactosyltransferase",
-      "ABO",
-      "MTA1-L1",
-      "MTA1L1",
-      "PID",
-      "Metastasis-associated protein MTA2",
-      "MTA1-L1 protein",
-      "p53 target protein in deacetylase complex",
-      "Metastasis-associated 1-like 1",
-      "metastasis associated 1 family member 2",
-      "MTA2",
-      "TMP",
-      "CL-20",
-      "B4B",
-      "Epithelial membrane protein 1",
-      "Protein B4B",
-      "EMP-1",
-      "Tumor-associated membrane protein",
-      "epithelial membrane protein 1",
-      "EMP1",
-      "HLF2",
-      "GIG12",
-      "LF",
-      "Growth-inhibiting protein 12",
-      "Talalactoferrin",
-      "Lactotransferrin",
-      "3.4.21.-",
-      "Lactoferrin",
-      "lactotransferrin",
-      "LTF",
-      "CD66e",
-      "CEA",
-      "Carcinoembryonic antigen-related cell adhesion molecule 5",
-      "Carcinoembryonic antigen",
-      "Meconium antigen 100",
-      "CEA cell adhesion molecule 5",
-      "CEACAM5",
-      "ANX4",
-      "P32.5",
-      "Annexin A4",
-      "35-beta calcimedin",
-      "Endonexin I",
-      "Lipocortin IV",
-      "Placental anticoagulant protein II",
-      "Chromobindin-4",
-      "Annexin IV",
-      "PP4-X",
-      "Carbohydrate-binding protein p33/p41",
-      "Protein II",
-      "Annexin-4",
-      "PAP-II",
-      "annexin A4",
-      "ANXA4",
-      "PRO1557",
-      "PRO2086",
-      "Beta-1 metal-binding globulin",
-      "serotransferrin",
-      "Serotransferrin",
-      "Siderophilin",
-      "Transferrin",
-      "transferrin",
-      "TF",
-      "Activating transcription factor 3",
-      "Cyclic AMP-dependent transcription factor ATF-3",
-      "cAMP-dependent transcription factor ATF-3",
-      "activating transcription factor 3",
-      "ATF3",
-      "SERS",
-      "SARS",
-      "Seryl-tRNA(Ser/Sec) synthetase",
-      "Serine--tRNA ligase cytoplasmic",
-      "serine tRNA ligase 1 cytoplasmic",
-      "Seryl-tRNA synthetase",
-      "SerRS",
-      "6.1.1.11",
-      "seryl-tRNA synthetase 1",
-      "SARS1",
-      "AREGB",
-      "SDGF",
-      "CRDGF",
-      "Colorectum cell-derived growth factor",
-      "AR",
-      "Amphiregulin",
-      "amphiregulin",
-      "AREG",
-      "MDA-5",
-      "Hlcd",
-      "MDA5",
-      "IDDM19",
-      "RH116",
-      "Helicase with 2 CARD domains",
-      "3.6.4.13",
-      "CADM-140 autoantigen",
-      "Clinically amyopathic dermatomyositis autoantigen 140 kDa",
-      "melanoma differentiation-associated gene 5",
-      "Interferon-induced with helicase C domain protein 1",
-      "RNA helicase-DEAD box protein 116",
-      "RLR-2",
-      "Interferon-induced helicase C domain-containing protein 1",
-      "helicard",
-      "Murabutide down-regulated protein",
-      "Helicard",
-      "RIG-I-like receptor 2",
-      "Melanoma differentiation-associated protein 5",
-      "interferon induced with helicase C domain 1",
-      "IFIH1",
-      "IL-6",
-      "BSF2",
-      "HGF",
-      "HSF",
-      "IFNB2",
-      "Interleukin-6",
-      "interferon beta 2",
-      "Hybridoma growth factor",
-      "BSF-2",
-      "IFN-beta-2",
-      "CDF",
-      "CTL differentiation factor",
-      "B-cell stimulatory factor 2",
-      "Interferon beta-2",
-      "interleukin 6",
-      "IL6",
-      "BLAU",
-      "CD",
-      "PSORAS1",
-      "CLR16.3",
-      "NLRC2",
-      "CARD15",
-      "IBD1",
-      "Caspase recruitment domain-containing protein 15",
-      "nucleotide-binding oligomerization domain leucine rich repeat and CARD domain containing 2",
-      "NLR family CARD domain containing 2",
-      "Inflammatory bowel disease protein 1",
-      "Nucleotide-binding oligomerization domain-containing protein 2",
-      "NOD-like receptor C2",
-      "nucleotide binding oligomerization domain containing 2",
-      "NOD2",
-      "RIG-I",
-      "FLJ13599",
-      "DKFZp434J1111",
-      "RIG-1",
-      "RIG1",
-      "Retinoic acid-inducible gene 1 protein",
-      "DEAD box protein 58",
-      "Antiviral innate immune response receptor RIG-I",
-      "Retinoic acid-inducible gene I protein",
-      "Probable ATP-dependent RNA helicase DDX58",
-      "retinoic acid inducible gene I",
-      "RIG-I-like receptor 1",
-      "RLR-1",
-      "RNA helicase RIG-I",
-      "DExD/H-box helicase 58",
-      "DDX58",
-      "P21",
-      "CIP1",
-      "WAF1",
-      "SDI1",
-      "CAP20",
-      "p21CIP1",
-      "p21Cip1/Waf1",
-      "p21",
-      "CDKN1",
-      "MDA6",
-      "PIC1",
-      "MDA-6",
-      "CDK-interacting protein 1",
-      "Melanoma differentiation-associated protein 6",
-      "Cyclin-dependent kinase inhibitor 1",
-      "cyclin dependent kinase inhibitor 1A",
-      "CDKN1A",
-      "IL-2",
-      "TCGF",
-      "T cell growth factor",
-      "T-cell growth factor",
-      "Interleukin-2",
-      "interleukin 2",
-      "IL2",
-      "NLRC1",
-      "CLR7.1",
-      "CARD4",
-      "NLR family CARD domain containing 1",
-      "Nucleotide-binding oligomerization domain-containing protein 1",
-      "nucleotide-binding oligomerization domain leucine rich repeat and CARD domain containing 1",
-      "Caspase recruitment domain-containing protein 4",
-      "nucleotide binding oligomerization domain containing 1",
-      "NOD1",
-      "CMP",
-      "CRTM",
-      "Matrilin-1",
-      "Cartilage matrix protein",
-      "matrilin 1",
-      "MATN1",
-      "PCD",
-      "DCOH",
-      "PCBD",
-      "PHS",
-      "pterin-4-alpha carbinolamine dehydratase",
-      "Pterin-4a-carbinolamine dehydratase (dimerization cofactor of hepatic nuclear factor 1-alpha)",
-      "dimerizing cofactor for HNF1",
-      "4.2.1.96",
-      "DCoH",
-      "Phenylalanine hydroxylase-stimulating protein",
-      "Pterin-4-alpha-carbinolamine dehydratase",
-      "Dimerization cofactor of hepatocyte nuclear factor 1-alpha",
-      "Dimerization cofactor of HNF1",
-      "4-alpha-hydroxy-tetrahydropterin dehydratase",
-      "Pterin carbinolamine dehydratase",
-      "pterin-4 alpha-carbinolamine dehydratase 1",
-      "PCBD1",
-      "1.16.3.1",
-      "Ceruloplasmin",
-      "ferroxidase",
-      "Ferroxidase",
-      "ceruloplasmin",
-      "CP",
-      "CDHF4",
-      "Pemphigus foliaceus antigen",
-      "DG1",
-      "Cadherin family member 4",
-      "Desmoglein-1",
-      "DGI",
-      "Desmosomal glycoprotein 1",
-      "desmoglein 1",
-      "DSG1",
-      "HC2",
-      "NU",
-      "PROS30",
-      "MGC14542",
-      "MGC14575",
-      "MGC14751",
-      "MGC1667",
-      "MGC21459",
-      "MGC22853",
-      "MGC23915",
-      "PSC2",
-      "Multicatalytic endopeptidase complex subunit C2",
-      "PROS-30",
-      "Proteasome nu chain",
-      "30 kDa prosomal protein",
-      "Macropain subunit C2",
-      "Proteasome component C2",
-      "Proteasome subunit alpha type-1",
-      "proteasome subunit α6",
-      "proteasome 20S subunit alpha 1",
-      "PSMA1",
-      "Olfactory marker protein",
-      "Olfactory neuronal-specific protein",
-      "olfactory marker protein",
-      "OMP",
-      "CD66d",
-      "CD66D",
-      "CGM1",
-      "Carcinoembryonic antigen-related cell adhesion molecule 3",
-      "Carcinoembryonic antigen CGM1",
-      "CEA cell adhesion molecule 3",
-      "CEACAM3",
-      "AST",
-      "SD",
-      "ISSD",
-      "NSD",
-      "SIALIN",
-      "SLD",
-      "Solute carrier family 17 member 5",
-      "H(+)/sialic acid cotransporter",
-      "Sialin",
-      "Vesicular H(+)/Aspartate-glutamate cotransporter",
-      "Membrane glycoprotein HP59",
-      "H(+)/nitrate cotransporter",
-      "solute carrier family 17 member 5",
-      "SLC17A5",
-      "sej",
-      "Se2",
-      "SEC2",
-      "Secretor blood group alpha-2-fucosyltransferase",
-      "alpha(12)FT2",
-      "Type 2 galactoside alpha-(12)-fucosyltransferase FUT2",
-      "Galactoside alpha-(12)-fucosyltransferase 2",
-      "GDP-L-fucose:beta-D-galactoside 2-alpha-L-fucosyltransferase 2",
-      "secretor factor",
-      "Fucosyltransferase 2",
-      "SE2",
-      "secretor blood group alpha-2-fucosyltransferase",
-      "Alpha(12)FT 2",
-      "2.4.1.344",
-      "Se",
-      "2.4.1.69",
-      "Type 1 galactoside alpha-(12)-fucosyltransferase FUT2",
-      "galactoside 2-alpha-L-fucosyltransferase 2",
-      "alpha (12) fucosyltransferase",
-      "Secretor factor",
-      "fucosyltransferase 2",
-      "FUT2",
-      "TRA2.10",
-      "MGC26544",
-      "TLX",
-      "MCP",
-      "MIC10",
-      "Membrane cofactor protein",
-      "Trophoblast leukocyte common antigen",
-      "CD46 molecule",
-      "CD46",
-      "IL1F2",
-      "IL-1B",
-      "IL1-BETA",
-      "IL-1 beta",
-      "Catabolin",
-      "Interleukin-1 beta",
-      "interleukin 1 beta",
-      "IL1B",
-      "CSIF",
-      "TGIF",
-      "IL10A",
-      "IL-10",
-      "Cytokine synthesis inhibitory factor",
-      "Interleukin-10",
-      "cytokine synthesis inhibitory factor",
-      "T-cell growth inhibitory factor",
-      "interleukin 10",
-      "IL10",
-      "SCYB8",
-      "LUCT",
-      "LECT",
-      "MDNCF",
-      "TSG-1",
-      "IL-8",
-      "NAP-1",
-      "3-10C",
-      "MONAP",
-      "AMCF-I",
-      "LYNAP",
-      "NAF",
-      "b-ENAP",
-      "GCP-1",
-      "K60",
-      "GCP1",
-      "NAP1",
-      "IL8",
-      "granulocyte chemotactic protein 1",
-      "C-X-C motif chemokine 8",
-      "Interleukin-8",
-      "Neutrophil-activating protein 1",
-      "Monocyte-derived neutrophil chemotactic factor",
-      "Emoctakin",
-      "Granulocyte chemotactic protein 1",
-      "Monocyte-derived neutrophil-activating peptide",
-      "T-cell chemotactic factor",
-      "tumor necrosis factor-induced gene 1",
-      "neutrophil-activating peptide 1",
-      "alveolar macrophage chemotactic factor I",
-      "beta endothelial cell-derived neutrophil activating peptide",
-      "Chemokine (C-X-C motif) ligand 8",
-      "lymphocyte derived neutrophil activating peptide",
-      "monocyte-derived neutrophil chemotactic factor",
-      "monocyte-derived neutrophil-activating peptide",
-      "lung giant cell carcinoma-derived chemotactic protein",
-      "Protein 3-10C",
-      "C-X-C motif chemokine ligand 8",
-      "CXCL8",
-      "PRL",
-      "Prolactin",
-      "prolactin",
-      "STC",
-      "Stanniocalcin-1",
-      "STC-1",
-      "stanniocalcin 1",
-      "STC1",
-      "UCNI",
-      "SRP",
-      "URP",
-      "UCN-II",
-      "Stresscopin-related peptide",
-      "Urocortin II",
-      "Urocortin-related peptide",
-      "Ucn II",
-      "prepro-urocortin 2",
-      "Urocortin-2",
-      "urocortin 2",
-      "UCN2",
-      "IFN-gamma",
-      "Interferon gamma",
-      "Immune interferon",
-      "interferon gamma",
-      "IFNG",
-      "hToll",
-      "CD284",
-      "TLR-4",
-      "ARMD10",
-      "3.2.2.6",
-      "Toll-like receptor 4",
-      "toll like receptor 4",
-      "TLR4",
-      "LARC",
-      "MIP-3a",
-      "exodus-1",
-      "ST38",
-      "CKb4",
-      "MIP3A",
-      "SCYA20",
-      "C-C motif chemokine 20",
-      "CC chemokine LARC",
-      "Macrophage inflammatory protein 3 alpha",
-      "Beta-chemokine exodus-1",
-      "Small-inducible cytokine A20",
-      "MIP-3-alpha",
-      "Liver and activation-regulated chemokine",
-      "C-C motif chemokine ligand 20",
-      "CCL20",
-      "p33",
-      "TNFSF3",
-      "TNFC",
-      "Lymphotoxin-beta",
-      "Tumor necrosis factor C",
-      "TNF-C",
-      "TNF superfamily member 3",
-      "LT-beta",
-      "Tumor necrosis factor ligand superfamily member 3",
-      "lymphotoxin beta",
-      "LTB",
-      "TNFSF2",
-      "DIF",
-      "TNF-alpha",
-      "TNFA",
-      "TNF-a",
-      "Cachectin",
-      "TNF superfamily member 2",
-      "Tumor necrosis factor ligand superfamily member 2",
-      "Tumor necrosis factor",
-      "tumor necrosis factor",
-      "TNF",
-      "T-cell surface glycoprotein CD4",
-      "T-cell surface antigen T4/Leu-3",
-      "CD4 molecule",
-      "CD4",
-      "IB1",
-      "JIP-1",
-      "JIP1",
-      "PRKM8IP",
-      "Islet-brain 1",
-      "C-Jun-amino-terminal kinase-interacting protein 1",
-      "JNK MAP kinase scaffold protein 1",
-      "IB-1",
-      "JNK-interacting protein 1",
-      "Mitogen-activated protein kinase 8-interacting protein 1",
-      "mitogen-activated protein kinase 8 interacting protein 1",
-      "MAPK8IP1",
-      "BP240",
-      "KIAA0728",
-      "FLJ21489",
-      "FLJ13425",
-      "FLJ32235",
-      "FLJ30627",
-      "CATX-15",
-      "BPA",
-      "MACF2",
-      "BP230",
-      "BPAG1",
-      "DMH",
-      "DT",
-      "Hemidesmosomal plaque protein",
-      "Dystonin",
-      "230 kDa bullous pemphigoid antigen",
-      "Bullous pemphigoid antigen",
-      "Bullous pemphigoid antigen 1",
-      "Dystonia musculorum protein",
-      "230/240 kDa bullous pemphigoid antigen",
-      "dystonin",
-      "DST",
-      "STAR",
-      "GUC2C",
-      "Intestinal guanylate cyclase",
-      "4.6.1.2",
-      "STA receptor",
-      "GC-C",
-      "Guanylyl cyclase C",
-      "Heat-stable enterotoxin receptor",
-      "hSTAR",
-      "heat stable enterotoxin receptor",
-      "guanylate cyclase 2C",
-      "GUCY2C",
-      "STC-2",
-      "Stanniocalcin-related protein",
-      "STCRP",
-      "STC-related protein",
-      "Stanniocalcin-2",
-      "stanniocalcin 2",
-      "STC2",
-      "H2R",
-      "Histamine H2 receptor",
-      "HH2R",
-      "Gastric receptor I",
-      "histamine receptor H2",
-      "HRH2",
-      "bA225H22.7",
-      "FAM26A",
-      "Calcium homeostasis modulator protein 3",
-      "Protein A",
-      "calcium homeostasis modulator 3",
-      "CALHM3",
-      "CD142",
-      "tissue factor",
-      "Tissue factor",
-      "Thromboplastin",
-      "Coagulation factor III",
-      "coagulation factor III tissue factor",
-      "F3",
-      "PBK1",
-      "L12",
-      "DKFZP564M182",
-      "CSIG",
-      "UTP30",
-      "CATX11",
-      "Ribosomal L1 domain-containing protein 1",
-      "CATX-11",
-      "Cellular senescence-inhibited gene protein",
-      "Protein PBK1",
-      "ribosomal L1 domain containing 1",
-      "RSL1D1",
-      "MTM",
-      "metallothionein 1D pseudogene",
-      "MT1DP",
-      "MAKV",
-      "Hormonally up-regulated neu tumor-associated kinase",
-      "Serine/threonine-protein kinase MAK-V",
-      "2.7.11.1",
-      "B19",
-      "hormonally up-regulated Neu-associated kinase",
-      "HUNK",
-      "PSA",
-      "APS",
-      "P-30 antigen",
-      "3.4.21.77",
-      "Kallikrein-3",
-      "Prostate-specific antigen",
-      "Gamma-seminoprotein",
-      "Seminin",
-      "Semenogelase",
-      "kallikrein related peptidase 3",
-      "KLK3",
-      "prepro-coagulation factor II",
-      "Coagulation factor II",
-      "Prothrombin",
-      "3.4.21.5",
-      "coagulation factor II thrombin",
-      "F2",
-      "HUSI-I",
-      "ALK1",
-      "ALP",
-      "BLPI",
-      "HUSI",
-      "WAP4",
-      "WFDC4",
-      "Antileukoproteinase",
-      "Seminal proteinase inhibitor",
-      "WAP four-disulfide core domain protein 4",
-      "Mucus proteinase inhibitor",
-      "Secretory leukocyte protease inhibitor",
-      "HUSI-1",
-      "antileukoproteinase",
-      "Protease inhibitor WAP4",
-      "MPI",
-      "secretory leukocyte peptidase inhibitor",
+    
       "SLPI"
    ],
    "terms25":[
       "DHEA-ST",
       "HST",
-      "STD",
-      "ST2",
-      "Bile salt sulfotransferase",
-      "Dehydroepiandrosterone sulfotransferase",
-      "SULT2A3",
-      "2.8.2.14",
-      "Hydroxysteroid Sulfotransferase",
-      "Sulfotransferase 2A1",
-      "2.8.2.2",
-      "DHEA-ST8",
-      "ST2A1",
-      "sulfotransferase family 2A member 1",
-      "SULT2A1",
-      "IB1099",
-      "ETL1",
-      "EPITEMPIN",
-      "EPT",
-      "Epitempin-1",
-      "Leucine-rich glioma-inactivated protein 1",
-      "leucine rich glioma inactivated 1",
-      "LGI1",
-      "C4BP",
-      "PRP",
-      "C4bp",
-      "Proline-rich protein",
-      "C4b-binding protein alpha chain",
-      "complement component 4 binding protein alpha",
-      "C4BPA",
-      "MDP",
-      "RDP",
-      "Dehydropeptidase-I",
-      "Beta-lactamase",
-      "Renal dipeptidase",
-      "3.4.13.19",
-      "Microsomal dipeptidase",
-      "hRDP",
-      "Dipeptidase 1",
-      "3.5.2.6",
-      "dipeptidase 1",
-      "DPEP1",
-      "A3GALNT",
-      "A3GALT1",
-      "ABO alpha 1-3-N-acetylgalactosaminyltransferase and alpha 1-3-galactosyltransferase",
-      "ABO",
-      "MTA1-L1",
-      "MTA1L1",
-      "PID",
-      "Metastasis-associated protein MTA2",
-      "MTA1-L1 protein",
-      "p53 target protein in deacetylase complex",
-      "Metastasis-associated 1-like 1",
-      "metastasis associated 1 family member 2",
-      "MTA2",
-      "TMP",
-      "CL-20",
-      "B4B",
-      "Epithelial membrane protein 1",
-      "Protein B4B",
-      "EMP-1",
-      "Tumor-associated membrane protein",
-      "epithelial membrane protein 1",
-      "EMP1",
-      "HLF2",
-      "GIG12",
-      "LF",
-      "Growth-inhibiting protein 12",
-      "Talalactoferrin",
-      "Lactotransferrin",
-      "3.4.21.-",
-      "Lactoferrin",
-      "lactotransferrin",
-      "LTF",
-      "CD66e",
-      "CEA",
-      "Carcinoembryonic antigen-related cell adhesion molecule 5",
-      "Carcinoembryonic antigen",
-      "Meconium antigen 100",
-      "CEA cell adhesion molecule 5",
-      "CEACAM5",
-      "ANX4",
-      "P32.5",
-      "Annexin A4",
-      "35-beta calcimedin",
-      "Endonexin I",
-      "Lipocortin IV",
-      "Placental anticoagulant protein II",
-      "Chromobindin-4",
-      "Annexin IV",
-      "PP4-X",
-      "Carbohydrate-binding protein p33/p41",
-      "Protein II",
-      "Annexin-4",
-      "PAP-II",
-      "annexin A4",
-      "ANXA4",
-      "PRO1557",
-      "PRO2086",
-      "Beta-1 metal-binding globulin",
-      "serotransferrin",
-      "Serotransferrin",
-      "Siderophilin",
-      "Transferrin",
-      "transferrin",
-      "TF",
-      "Activating transcription factor 3",
-      "Cyclic AMP-dependent transcription factor ATF-3",
-      "cAMP-dependent transcription factor ATF-3",
-      "activating transcription factor 3",
-      "ATF3",
-      "SERS",
-      "SARS",
-      "Seryl-tRNA(Ser/Sec) synthetase",
-      "Serine--tRNA ligase cytoplasmic",
-      "serine tRNA ligase 1 cytoplasmic",
-      "Seryl-tRNA synthetase",
-      "SerRS",
-      "6.1.1.11",
-      "seryl-tRNA synthetase 1",
-      "SARS1",
-      "AREGB",
-      "SDGF",
-      "CRDGF",
-      "Colorectum cell-derived growth factor",
-      "AR",
-      "Amphiregulin",
-      "amphiregulin",
-      "AREG",
-      "MDA-5",
-      "Hlcd",
-      "MDA5",
-      "IDDM19",
-      "RH116",
-      "Helicase with 2 CARD domains",
-      "3.6.4.13",
-      "CADM-140 autoantigen",
-      "Clinically amyopathic dermatomyositis autoantigen 140 kDa",
-      "melanoma differentiation-associated gene 5",
-      "Interferon-induced with helicase C domain protein 1",
-      "RNA helicase-DEAD box protein 116",
-      "RLR-2",
-      "Interferon-induced helicase C domain-containing protein 1",
-      "helicard",
-      "Murabutide down-regulated protein",
-      "Helicard",
-      "RIG-I-like receptor 2",
-      "Melanoma differentiation-associated protein 5",
-      "interferon induced with helicase C domain 1",
-      "IFIH1",
-      "IL-6",
-      "BSF2",
-      "HGF",
-      "HSF",
-      "IFNB2",
-      "Interleukin-6",
-      "interferon beta 2",
-      "Hybridoma growth factor",
-      "BSF-2",
-      "IFN-beta-2",
-      "CDF",
-      "CTL differentiation factor",
-      "B-cell stimulatory factor 2",
-      "Interferon beta-2",
-      "interleukin 6",
-      "IL6",
-      "BLAU",
-      "CD",
-      "PSORAS1",
-      "CLR16.3",
-      "NLRC2",
-      "CARD15",
-      "IBD1",
-      "Caspase recruitment domain-containing protein 15",
-      "nucleotide-binding oligomerization domain leucine rich repeat and CARD domain containing 2",
-      "NLR family CARD domain containing 2",
-      "Inflammatory bowel disease protein 1",
-      "Nucleotide-binding oligomerization domain-containing protein 2",
-      "NOD-like receptor C2",
-      "nucleotide binding oligomerization domain containing 2",
-      "NOD2",
-      "RIG-I",
-      "FLJ13599",
-      "DKFZp434J1111",
-      "RIG-1",
-      "RIG1",
-      "Retinoic acid-inducible gene 1 protein",
-      "DEAD box protein 58",
-      "Antiviral innate immune response receptor RIG-I",
-      "Retinoic acid-inducible gene I protein",
-      "Probable ATP-dependent RNA helicase DDX58",
-      "retinoic acid inducible gene I",
-      "RIG-I-like receptor 1",
-      "RLR-1",
-      "RNA helicase RIG-I",
-      "DExD/H-box helicase 58",
-      "DDX58",
-      "P21",
-      "CIP1",
-      "WAF1",
-      "SDI1",
-      "CAP20",
-      "p21CIP1",
-      "p21Cip1/Waf1",
-      "p21",
-      "CDKN1",
-      "MDA6",
-      "PIC1",
-      "MDA-6",
-      "CDK-interacting protein 1",
-      "Melanoma differentiation-associated protein 6",
-      "Cyclin-dependent kinase inhibitor 1",
-      "cyclin dependent kinase inhibitor 1A",
-      "CDKN1A",
-      "IL-2",
-      "TCGF",
-      "T cell growth factor",
-      "T-cell growth factor",
-      "Interleukin-2",
-      "interleukin 2",
-      "IL2",
-      "NLRC1",
-      "CLR7.1",
-      "CARD4",
-      "NLR family CARD domain containing 1",
-      "Nucleotide-binding oligomerization domain-containing protein 1",
-      "nucleotide-binding oligomerization domain leucine rich repeat and CARD domain containing 1",
-      "Caspase recruitment domain-containing protein 4",
-      "nucleotide binding oligomerization domain containing 1",
-      "NOD1",
-      "CMP",
-      "CRTM",
-      "Matrilin-1",
-      "Cartilage matrix protein",
-      "matrilin 1",
-      "MATN1",
-      "PCD",
-      "DCOH",
-      "PCBD",
-      "PHS",
-      "pterin-4-alpha carbinolamine dehydratase",
-      "Pterin-4a-carbinolamine dehydratase (dimerization cofactor of hepatic nuclear factor 1-alpha)",
-      "dimerizing cofactor for HNF1",
-      "4.2.1.96",
-      "DCoH",
-      "Phenylalanine hydroxylase-stimulating protein",
-      "Pterin-4-alpha-carbinolamine dehydratase",
-      "Dimerization cofactor of hepatocyte nuclear factor 1-alpha",
-      "Dimerization cofactor of HNF1",
-      "4-alpha-hydroxy-tetrahydropterin dehydratase",
-      "Pterin carbinolamine dehydratase",
-      "pterin-4 alpha-carbinolamine dehydratase 1",
-      "PCBD1",
-      "1.16.3.1",
-      "Ceruloplasmin",
-      "ferroxidase",
-      "Ferroxidase",
-      "ceruloplasmin",
-      "CP",
-      "CDHF4",
-      "Pemphigus foliaceus antigen",
+      
       "DG1",
       "Cadherin family member 4",
       "Desmoglein-1",
@@ -2686,6 +2039,236 @@ HPO
 
 
 Targets
+
+{% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/targets/" %}
+
+```text
+{
+   "id":"ENSG00000001561",
+   "approvedName":"ectonucleotide pyrophosphatase/phosphodiesterase 4",
+   "approvedSymbol":"ENPP4",
+   "bioType":"protein_coding",
+   "hgncId":"HGNC:3359",
+   "reactome":[
+      "R-HSA-6798695"
+   ],
+   "nameSynonyms":[
+      "E-NPP 4",
+      "3.6.1.29",
+      "Bis(5'-adenosyl)-triphosphatase",
+      "Bis(5'-adenosyl)-triphosphatase ENPP4",
+      "Ectonucleotide pyrophosphatase/phosphodiesterase family member 4",
+      "AP3Aase",
+      "NPP-4",
+      "AP3A hydrolase"
+   ],
+   "symbolSynonyms":[
+      "NPP4",
+      "KIAA0879",
+      "AP3Aase"
+   ],
+   "genomicLocation":{
+      "chromosome":"6",
+      "start":46129989,
+      "end":46146688,
+      "strand":1
+   },
+   "proteinAnnotations":{
+      "id":"Q9Y6X5",
+      "accessions":[
+         "Q7L2N1",
+         "Q9Y6X5",
+         "A8K5G1"
+      ],
+      "functions":[
+         "Hydrolyzes extracellular Ap3A into AMP and ADP, and Ap4A into AMP and ATP. Ap3A and Ap4A are diadenosine polyphosphates thought to induce proliferation of vascular smooth muscle cells. Acts as a procoagulant, mediating platelet aggregation at the site of nascent thrombus via release of ADP from Ap3A and activation of ADP receptors."
+      ],
+      "pathways":[
+         
+      ],
+      "similarities":[
+         "Belongs to the nucleotide pyrophosphatase/phosphodiesterase family."
+      ],
+      "subcellularLocations":[
+         "Cell membrane"
+      ],
+      "subunits":[
+         
+      ]
+   },
+   "tractability":{
+      "antibody":{
+         "buckets":[
+            4,
+            5,
+            7
+         ],
+         "categories":{
+            "clinical_precedence":0.0,
+            "predicted_tractable_high_confidence":1.0,
+            "predicted_tractable_med_low_confidence":0.25
+         },
+         "top_category":"Predicted_Tractable_ab_High_confidence"
+      },
+      "smallmolecule":{
+         "buckets":[
+            4
+         ],
+         "categories":{
+            "clinical_precedence":0.0,
+            "discovery_precedence":0.7,
+            "predicted_tractable":0.0
+         },
+         "high_quality_compounds":0,
+         "small_molecule_genome_member":false,
+         "top_category":"Discovery_Precedence_sm"
+      }
+   },
+   "go":[
+      {
+         "id":"GO:0070062",
+         "value":{
+            "evidence":"ECO_0007005",
+            "project":"UniProtKB",
+            "term":"C:extracellular exosome"
+         }
+      },
+      {
+         "id":"GO:0101003",
+         "value":{
+            "evidence":"ECO_0000304",
+            "project":"Reactome",
+            "term":"C:ficolin-1-rich granule membrane"
+         }
+      },
+      {
+         "id":"GO:0016021",
+         "value":{
+            "evidence":"ECO_0000501",
+            "project":"UniProtKB-KW",
+            "term":"C:integral component of membrane"
+         }
+      },
+      {
+         "id":"GO:0016020",
+         "value":{
+            "evidence":"ECO_0007005",
+            "project":"UniProtKB",
+            "term":"C:membrane"
+         }
+      },
+      {
+         "id":"GO:0005886",
+         "value":{
+            "evidence":"ECO_0000304",
+            "project":"Reactome",
+            "term":"C:plasma membrane"
+         }
+      },
+      {
+         "id":"GO:0047710",
+         "value":{
+            "evidence":"ECO_0000314",
+            "project":"UniProtKB",
+            "term":"F:bis(5'-adenosyl)-triphosphatase activity"
+         }
+      },
+      {
+         "id":"GO:0046872",
+         "value":{
+            "evidence":"ECO_0000501",
+            "project":"UniProtKB-KW",
+            "term":"F:metal ion binding"
+         }
+      },
+      {
+         "id":"GO:0007596",
+         "value":{
+            "evidence":"ECO_0000501",
+            "project":"UniProtKB-KW",
+            "term":"P:blood coagulation"
+         }
+      },
+      {
+         "id":"GO:0043312",
+         "value":{
+            "evidence":"ECO_0000304",
+            "project":"Reactome",
+            "term":"P:neutrophil degranulation"
+         }
+      },
+      {
+         "id":"GO:0030194",
+         "value":{
+            "evidence":"ECO_0000314",
+            "project":"UniProtKB",
+            "term":"P:positive regulation of blood coagulation"
+         }
+      },
+      {
+         "id":"GO:0046130",
+         "value":{
+            "evidence":"ECO_0000314",
+            "project":"UniProtKB",
+            "term":"P:purine ribonucleoside catabolic process"
+         }
+      }
+   ],
+   "hallMarks":{
+      
+   }
+}
+```
+
+## search drug
+
+```text
+{
+   "id":"CHEMBL110739",
+   "name":"CORTICOSTERONE",
+   "description":"Small molecule drug with a maximum clinical trial phase of III and has 1 investigational indication.",
+   "entity":"drug",
+   "category":[
+      "Small molecule"
+   ],
+   "keywords":[
+      "11-b21-Dihydroxypregn-320-dione",
+      "17-Deoxycortisol",
+      "Corticosteron",
+      "16827"
+   ],
+   "prefixes":[
+      "11-b21-Dihydroxypregn-320-dione",
+      "17-Deoxycortisol",
+      "Corticosteron",
+      "Corticosterone",
+      "NSC-9705",
+      "Preg-4-ene-320-dione11-b21-dihydroxy-",
+      "CORTICOSTERONE"
+   ],
+   "ngrams":[
+      "CORTICOSTERONE",
+      "11-b21-Dihydroxypregn-320-dione",
+      "17-Deoxycortisol",
+      "Corticosteron",
+      "Corticosterone",
+      "NSC-9705",
+      "Preg-4-ene-320-dione11-b21-dihydroxy-"
+   ],
+   "terms":[
+      "osteoarthritis hip"
+   ],
+   "terms25":[
+      
+   ],
+   "terms5":[
+      
+   ],
+   "multiplier":0.01
+}
+```
+
+## targets
 
 {% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/targets/" %}
 
