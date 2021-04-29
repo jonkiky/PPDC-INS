@@ -1,6 +1,10 @@
 # Backend
 
+
+
 ![](.gitbook/assets/screen-shot-2021-04-28-at-3.12.04-pm.png)
+
+![](.gitbook/assets/screen-shot-2021-04-28-at-3.34.15-pm.png)
 
 ## **Start with Router**
 
@@ -43,17 +47,39 @@ GET            /assets/*file                   controllers.Assets.versioned(path
 GET            /                               controllers.HomeController.index
 ```
 
-###  ****GET /api/v4/graphql
+returns sample home page.  
+
+### GET /api/v4/graphql
+
+```text
+GET            /api/v4/graphql                 controllers.api.v4.graphql.GraphQLController.gql(query: String, variables: Option[String] ?= None, operation: Option[String] ?= None)
+```
+
+executes controllers.api.v4.graphql.GraphQLController.**gql** function.
 
 
 
-POST /api/v4/graphql
-
-
-
-OPTIONS /api/v4/graphql
 
 
 
 
+### POST /api/v4/graphql
+
+
+
+### OPTIONS /api/v4/graphql
+
+
+
+It uses  
+
+
+
+## RESOURCE:  
+
+Open-source web application framework   [Play Framework Cookbook](https://learning-oreilly-com.proxy.montgomerylibrary.org/library/view/play-framework-cookbook/9781849515528/)
+
+Sangria is a Scala GraphQL implementation
+
+[https://sangria-graphql.github.io/getting-started/](https://sangria-graphql.github.io/getting-started/)
 
