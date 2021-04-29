@@ -445,7 +445,27 @@ load\_cancerbiomarker.sh
 
 
 
-## evidences
+## evidence stats
+
+```text
+{
+   "sourceId":"europepmc",
+   "#resolvedTarget-false":859652,
+   "#resolvedDisease-false":79996,
+   "#markedDuplicate-true":362431,
+   "#nullifiedScore-true":0,
+   "#excludedBiotype-true":0,
+   "#targetId":10909,
+   "#diseaseId":29,
+   "#counts":1256180
+}
+```
+
+
+
+## evidence **Succeeded**
+
+
 
 {% embed url="http://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.02/output/ETL/evidences/succeeded/sourceId%3Dcancer\_gene\_census/" %}
 
