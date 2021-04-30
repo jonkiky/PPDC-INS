@@ -57,3 +57,8 @@ ssh -i .ssh/devops centos@172.18.10.41
 
 
 
+
+
+Data size: 66g   
+Downloaded: 9069 files, 66G in 2h 28m 20s \(7.55 MB/s\)
+
