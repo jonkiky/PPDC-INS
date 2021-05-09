@@ -15,4 +15,5 @@
   * [GraphQL Schema](etl/graphql-schema.md)
 * [Backlog](backlog.md)
 * [Backend](backend.md)
+* [How to Synchronize OT Git Repositories.](how-to-synchronize-ot-git-repositories..md)
 
