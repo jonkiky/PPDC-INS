@@ -27,6 +27,18 @@ ssh -i .ssh/devops centos@172.18.10.31
 
 ssh -i .ssh/devops centos@172.18.10.41
 
+ssh -i .ssh/devops bento@172.18.10.61
+
+ssh -i .ssh/devops bento@172.18.10.15
+
+Jenkins:
+
+{% embed url="https://jenkins.bento-tools.org/login?from=%2Fjob%2FPPDC%2Fjob%2Fppdc-otg%2F28%2Fconsole" %}
+
+
+
+
+
 
 
 **Install NVM**
