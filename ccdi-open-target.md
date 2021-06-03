@@ -36,7 +36,11 @@ open targets genetics: [https://ppdc-otp-dev.bento-tools.org](https://ppdc-otp-d
 
 ### **Open targets platform :** 
 
-      front-end : 172.18.10.184
+     dev  front-end : 172.18.10.184
+
+qa 172.18.10.46
+
+
 
      database & Backend: 172.18.10.41
 
