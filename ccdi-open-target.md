@@ -42,7 +42,7 @@ qa 172.18.10.46
 
 
 
-     database & Backend: 172.18.10.41
+     database & Backend: 172.18.10.86
 
 ### **Connects to the instances :**
 
@@ -58,6 +58,10 @@ ssh -i .ssh/devops centos@172.18.10.184
 ssh -i .ssh/devops centos@172.18.10.31
 
 ssh -i .ssh/devops centos@172.18.10.41
+
+
+
+
 
 
 
