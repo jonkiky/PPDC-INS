@@ -57,7 +57,10 @@ ssh -i .ssh/devops centos@172.18.10.184
 
 ssh -i .ssh/devops centos@172.18.10.31
 
-ssh -i .ssh/devops centos@172.18.10.41
+ssh -i .ssh/devops centos@172.18.10.41  
+
+
+ ssh -i .ssh/bento bento@172.18.10.46
 
 
 
