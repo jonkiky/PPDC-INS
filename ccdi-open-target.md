@@ -42,7 +42,9 @@ qa 172.18.10.46
 
 
 
-     database & Backend: 172.18.10.46
+     database & Backend: 
+
+ssh -i .ssh/devops bento@172.18.11.86
 
 ### **Connects to the instances :**
 
