@@ -42,7 +42,7 @@ qa 172.18.10.46
 
 
 
-     database & Backend: 172.18.10.86
+     database & Backend: 172.18.10.46
 
 ### **Connects to the instances :**
 
