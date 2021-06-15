@@ -75,3 +75,20 @@ ssh -i .ssh/devops centos@172.18.10.41
 Data size: 66g   
 Downloaded: 9069 files, 66G in 2h 28m 20s \(7.55 MB/s\)
 
+
+
+
+
+
+
+## [Docker-compose up : Error while fetching server API version: \('Connection aborted.', ConnectionRefusedError\(61, 'Connection refused'\)\)](https://stackoverflow.com/questions/64662372/docker-compose-up-error-while-fetching-server-api-version-connection-aborte)
+
+
+
+Add your user to docker group and try again.
+
+```text
+sudo gpasswd -a $USER docker
+newgrp docker
+```
+
