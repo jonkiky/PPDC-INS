@@ -92,3 +92,16 @@ sudo gpasswd -a $USER docker
 newgrp docker
 ```
 
+
+
+
+
+ES data too large for HTTP request. 
+
+```text
+Enlarge JVM memorys
+set jvm.option 
+-Xms4g
+-Xmx4g
+```
+
