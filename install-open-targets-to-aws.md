@@ -31,6 +31,10 @@ ssh -i .ssh/devops bento@172.18.10.61
 
 ssh -i .ssh/devops bento@172.18.10.15
 
+ssh -l .ssh/devops bento@172.18.10.236
+
+QA : ssh -l .ssh/devops bento@172.18.11.238
+
 Jenkins:
 
 {% embed url="https://jenkins.bento-tools.org/login?from=%2Fjob%2FPPDC%2Fjob%2Fppdc-otg%2F28%2Fconsole" %}
