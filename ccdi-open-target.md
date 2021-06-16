@@ -64,6 +64,12 @@ ssh -i .ssh/devops centos@172.18.10.41
 
  ssh -i .ssh/bento bento@172.18.10.46
 
+ETL ssh -l .ssh/devops bento@172.18.10.236
+
+QA db instance ssh -i .ssh/devops bento@172.18.11.238
+
+
+
 
 
 
